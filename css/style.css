@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: /*#0a97b7;*/ #55cfd6;
+}
+.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 3em 0;
+  text-align: center;
+  position: relative;
+}
+.container .container__title {
+  margin: 0;
+  color: #fef8e7;
+  font-size: 3.3em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+.lnr.lnr-history {
+  margin: 0 3px;
+  font-size: 25px;
+  position: relative;
+  bottom: 1px;
+}
+.container__description {
+  margin-top: 0;
+  color: #fef8e7;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  text-transform: capitalize;
+  font-size: 1.8em;
+}
+.container__app-info {
+  text-align: right;
+  color: #fff;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  position: absolute;
+  top: 0.4em;
+  right: 0.5em;
+}
+.lnr.lnr-question-circle {
+  color: #fef8e7;
+  font-size: 30px;
+  cursor: pointer;
+}
+.settings__container {
+  margin-top: 3em;
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.settings__time {
+  width: 180px;
+  height: 70px;
+  margin: 0 2em;
+  text-align: center;
+  border: 2px solid #fef8e7;
+  border-radius: 5px;
+}
+.settings__time-work,
+.settings__time-break {
+
+}
+.settings__time-title {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+  margin-top: -0.8em;
+  background-color: #55cfd6;
+  color: #fff;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  font-size: 1.3em;
+  border-top: none;
+  border-bottom: none;
+  position: relative;
+}
+.settings__time-title:before {
+  content: ".";
+  display: block;
+  font-size: 3em;
+  margin: 0;
+  color: #fef8e7;
+  position: absolute;
+  top: -0.66em;
+  left: -0.1em;
+}
+.settings__time-title:after  {
+  content: ".";
+  display: block;
+  font-size: 3em;
+  margin: 0;
+  color: #fef8e7;
+  position: absolute;
+  top: -0.66em;
+  right: -0.1em;
+}
+.settings__time-substract,
+.settings__time-digits,
+.settings__time-add {
+  display: inline-block;
+  color: #fff;
+  font-size: 2em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+}
+.settings__time-substract,
+.settings__time-add {
+  margin: 0 0.2em;
+  margin-top: -0.2em;
+  font-size: 3em;
+  cursor: pointer;
+}
+#canvas {
+  margin: 2em 0;
+  position: relative;
+  top: 5em;
+  left: calc(50% - 102px);
+}
