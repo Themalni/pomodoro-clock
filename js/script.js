@@ -5,7 +5,7 @@ var workTimeReset = document.querySelector(".settings__work-reset");
 var breakTimeReset = document.querySelector(".settings__break-reset");
 var clockTime = document.querySelector(".clock-time");
 var i;
-var seconds = 5;
+var seconds = 60;
 var minutes = "";
 var zero = "";
 
@@ -30,7 +30,7 @@ var zero = "";
           }else if(breakBtnData == "-" && breakMinutesVal > 0){
             changeTime = breakMinutesVal - 5;
             breakMinutes.innerHTML = changeTime;
-          }else if(breakBtnData == "+" && breakMinutesVal < 60){
+          }else if(breakBtnData == "+" && breakMinutesVal < 30){
             changeTime = breakMinutesVal + 5;
             breakMinutes.innerHTML = changeTime;
           }
@@ -53,25 +53,25 @@ function runTime(){
       minutes = workMinutes.textContent;
 
       seconds--;
-      var countDown = minutes - 1;
+      minutes -= 1;
 
 
         if(seconds == 0){
-          seconds = 5;
+          seconds = 59;
           /*clearTimeout(count);*/
-            countDown -= 1;
-            if(countDown < 10){
-              countDown = zero + countDown;
-              clockTime.innerHTML = countDown + ":" + seconds;
+          minutes--;
+            if(minutes < 10){
+              minutes = zero + minutes;
+              clockTime.innerHTML = minutes + ":" + seconds;
             }else{
-              clockTime.innerHTML = countDown + ":" + seconds;
+              clockTime.innerHTML = minutes + ":" + seconds;
             }
         }
         if(seconds < 10){
             seconds = zero + seconds;
-            clockTime.innerHTML = countDown + ":" + seconds;
+            clockTime.innerHTML = minutes + ":" + seconds;
           }else{
-            clockTime.innerHTML = countDown + ":" + seconds;
+            clockTime.innerHTML = minutes + ":" + seconds;
           }
 
 }
@@ -93,5 +93,8 @@ var count = setInterval(runTime, 1000);
         ctx.arc(canvasWidth / 2, canvasWidth / 2, 100, 0, 6.28, false);
         ctx.stroke();
   }
-// add start pause and stop buttons
+
   clock();
+
+// add start pause and stop buttons
+// make minutes to go down by one
