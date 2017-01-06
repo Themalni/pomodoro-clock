@@ -6,7 +6,7 @@ body {
 .container {
   max-width: 100%;
   margin: 0;
-  padding: 3em 0;
+  padding: 2em 0;
   text-align: center;
   position: relative;
 }
@@ -54,6 +54,16 @@ body {
   flex-direction: row;
   justify-content: center;
 }
+.settings__break-reset {
+  position: relative;
+  left: -1.8em;
+}
+.lnr.lnr-undo {
+  color: #fef8e7;
+  font-size: 25px;
+  cursor: pointer;
+  transform: rotateZ(90deg);
+}
 .settings__time {
   width: 180px;
   height: 70px;
@@ -61,10 +71,6 @@ body {
   text-align: center;
   border: 2px solid #fef8e7;
   border-radius: 5px;
-}
-.settings__time-work,
-.settings__time-break {
-
 }
 .settings__time-title {
   display: block;
@@ -76,8 +82,6 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
   font-size: 1.3em;
-  border-top: none;
-  border-bottom: none;
   position: relative;
 }
 .settings__time-title:before {
@@ -104,10 +108,13 @@ body {
 .settings__time-digits,
 .settings__time-add {
   display: inline-block;
-  color: #fff;
+  color: #fef8e7;
   font-size: 2em;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .settings__time-digits {
   width: 35px;
@@ -118,13 +125,22 @@ body {
   margin-top: -0.2em;
   font-size: 3em;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }
-#canvas {
-  margin: 2em 0;
+#clock-canvas {
   position: relative;
-  top: 5em;
+  top: 1em;
   left: calc(50% - 102px);
+}
+.clock-container {
+  position: relative;
+}
+.clock-time {
+  width: 200px;
+  color: #fef8e7;
+  font-size: 2em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  position: absolute;
+  top: 2.7em;
+  left: calc(50% - 40px);
 }

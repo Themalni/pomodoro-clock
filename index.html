@@ -19,26 +19,30 @@
     <h1 class="container__title">Pomodoro Cl<span class="lnr lnr-history"></span>ck</h1>
     <h3 class="container__description">Organize your time</h3>
     <div class="settings__container">
+      <span class="settings__work-reset lnr lnr-undo"></span>
       <div class="settings__time">
         <div class="settings__time-work">
           <h3 class="settings__time-title">work time</h3>
-          <span class="settings__time-substract">-</span>
-          <span class="settings__time-digits"></span>
-          <span class="settings__time-add">+</span>
+          <span class="settings__time-button settings__time-substract" data-work-btn="-">-</span>
+          <span class="settings__time-digits">25</span>
+          <span class="settings__time-button settings__time-add" data-work-btn="+">+</span>
         </div>
       </div>
       <div class="settings__time">
         <div class="settings__time-break">
           <h3 class="settings__time-title">break time</h3>
-          <span class="settings__time-button settings__time-substract">-</span>
-          <span class="settings__time-digits"></span>
-          <span class="settings__time-button settings__time-add">+</span>
+          <span class="settings__time-button settings__time-substract" data-break-btn="-">-</span>
+          <span class="settings__time-digits">5</span>
+          <span class="settings__time-button settings__time-add" data-break-btn="+">+</span>
         </div>
       </div>
+      <span class="settings__break-reset lnr lnr-undo"></span>
     </div>
-    <!--<canvas id="canvas" width="204" height="204"></canvas>-->
   </div>
-
+  <div class="clock-container">
+    <div class="clock-time"></div>
+    <canvas id="clock-canvas" width="204" height="204"></canvas>
+  <div>
 
 
   <script src="js/script.js"></script>
