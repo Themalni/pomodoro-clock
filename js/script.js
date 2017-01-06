@@ -48,38 +48,41 @@ var zero = "";
 
 clockTime.innerHTML = workMinutes.textContent + ":" + "00";
 
-function runTime(){
-      zero = "0";
-      minutes = workMinutes.textContent;
+  // run clock
+  function runTime(){
+    zero = "0";
+    minutes = workMinutes.textContent;
 
-      seconds--;
-      minutes -= 1;
+    seconds--;
+    minutes -= 1;
 
+      if(seconds == 0){
+        seconds = 59;
+        minutes--;
 
-        if(seconds == 0){
-          seconds = 59;
-          /*clearTimeout(count);*/
-          minutes--;
-            if(minutes < 10){
-              minutes = zero + minutes;
-              clockTime.innerHTML = minutes + ":" + seconds;
-            }else{
-              clockTime.innerHTML = minutes + ":" + seconds;
-            }
-        }
-        if(seconds < 10){
-            seconds = zero + seconds;
+          // add another ziro to minutes
+          if(minutes < 10){
+            minutes = zero + minutes;
             clockTime.innerHTML = minutes + ":" + seconds;
           }else{
             clockTime.innerHTML = minutes + ":" + seconds;
           }
+      }
+      // add another ziro to seconds
+      if(seconds < 10){
+          seconds = zero + seconds;
+          clockTime.innerHTML = minutes + ":" + seconds;
+        }else{
+          clockTime.innerHTML = minutes + ":" + seconds;
+        }
+      // stop clock
+      if(minutes == 0){
+        clearTimeout(count);
+      }
 
-}
+  }
 
-var count = setInterval(runTime, 1000);
-
-
-
+  var count = setInterval(runTime, 1000);
 
   // canvas clock
   function clock(){
