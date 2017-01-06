@@ -109,12 +109,18 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
+.settings__time-digits {
+  width: 35px;
+}
 .settings__time-substract,
 .settings__time-add {
   margin: 0 0.2em;
   margin-top: -0.2em;
   font-size: 3em;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 #canvas {
   margin: 2em 0;
