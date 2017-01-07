@@ -5,6 +5,7 @@ var workTimeReset = document.querySelector(".settings__work-reset");
 var breakTimeReset = document.querySelector(".settings__break-reset");
 var clockTime = document.querySelector(".clock-time");
 var infoIcon = document.querySelector(".app-info__icon");
+var infoModal = document.querySelector(".app-info__modal");
 var i;
 var count = 60;
 
@@ -44,9 +45,9 @@ var count = 60;
     breakMinutes.innerHTML = 5;
   });
   // show info about pomodoro technique
-  info.addEventListener("click", function(e){
-
-  })
+  infoIcon.addEventListener("click", function(e){
+    infoModal.style.dislay = "block";
+  });
 
 
 /*clockTime.innerHTML = workMinutes.textContent + ":" + "00";*/

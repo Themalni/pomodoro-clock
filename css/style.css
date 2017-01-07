@@ -46,8 +46,17 @@ body {
   font-size: 30px;
   cursor: pointer;
 }
-.app-info__text {
-  
+.app-info__modal {
+  margin: 0 auto;
+  padding: 2em 5em;
+  max-width: 60%;
+  min-height: 300px;
+  background-color: #ccc;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 8em;
+  left: 30%;
 }
 .settings__container {
   margin-top: 3em;
