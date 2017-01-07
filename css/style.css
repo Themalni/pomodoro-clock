@@ -31,7 +31,7 @@ body {
   text-transform: capitalize;
   font-size: 1.8em;
 }
-.container__app-info {
+.app-info__icon {
   text-align: right;
   color: #fff;
   font-family: 'Josefin Sans', sans-serif;
@@ -45,6 +45,9 @@ body {
   color: #fef8e7;
   font-size: 30px;
   cursor: pointer;
+}
+.app-info__text {
+  
 }
 .settings__container {
   margin-top: 3em;

@@ -4,11 +4,9 @@ var buttons = document.querySelectorAll(".settings__time-button");
 var workTimeReset = document.querySelector(".settings__work-reset");
 var breakTimeReset = document.querySelector(".settings__break-reset");
 var clockTime = document.querySelector(".clock-time");
+var infoIcon = document.querySelector(".app-info__icon");
 var i;
-var seconds = 60;
-var minutes = "";
-var zero = "";
-
+var count = 60;
 
   // listening for a button click
   for(i = 0; i < buttons.length; i++){
@@ -45,44 +43,65 @@ var zero = "";
   breakTimeReset.addEventListener("click", function(e){
     breakMinutes.innerHTML = 5;
   });
+  // show info about pomodoro technique
+  info.addEventListener("click", function(e){
 
-clockTime.innerHTML = workMinutes.textContent + ":" + "00";
+  })
+
+
+/*clockTime.innerHTML = workMinutes.textContent + ":" + "00";*/
 
   // run clock
   function runTime(){
-    zero = "0";
-    minutes = workMinutes.textContent;
+    var zero = "0";
+    var minutes = workMinutes.textContent;
+    var totalSec = minutes * 60;
+    var seconds;
 
-    seconds--;
-    minutes -= 1;
 
-      if(seconds == 0){
-        seconds = 59;
-        minutes--;
+        minutes = Math.floor(totalSec % 3600 / 60);
+        seconds = Math.floor(totalSec % 3600 % 60);
+
+        seconds = 60 + seconds;
+        console.log(seconds);
+        count--;
+
+
+        // stop clock
+        if(count == -1){
+          clearTimeout(countTime);
+        }
+
+    var displayTime = [minutes, seconds].join(":");
+
+    /*clockTime.innerHTML = displayTime;*/
+
+
+
+      /*if(seconds == 0){
+        seconds = 10;*/
+
+
 
           // add another ziro to minutes
           if(minutes < 10){
             minutes = zero + minutes;
-            clockTime.innerHTML = minutes + ":" + seconds;
+            clockTime.innerHTML = displayTime;
           }else{
-            clockTime.innerHTML = minutes + ":" + seconds;
+            clockTime.innerHTML = displayTime;
           }
-      }
-      // add another ziro to seconds
-      if(seconds < 10){
-          seconds = zero + seconds;
-          clockTime.innerHTML = minutes + ":" + seconds;
-        }else{
-          clockTime.innerHTML = minutes + ":" + seconds;
-        }
-      // stop clock
-      if(minutes == 0){
-        clearTimeout(count);
-      }
+
+          // add another ziro to seconds
+          if(seconds < 10){
+              seconds = zero + seconds;
+              clockTime.innerHTML = displayTime;
+            }else{
+              clockTime.innerHTML = displayTime;
+            }
 
   }
 
-  var count = setInterval(runTime, 1000);
+  var countTime = setInterval(runTime, 1000);
 
   // canvas clock
   function clock(){
