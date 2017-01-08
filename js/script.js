@@ -5,8 +5,8 @@ var workTimeReset = document.querySelector(".settings__work-reset");
 var breakTimeReset = document.querySelector(".settings__break-reset");
 var clockTime = document.querySelector(".clock-time");
 var infoIcon = document.querySelector(".app-info__icon");
-var infoModalContainer = document.querySelector(".app-info__container");
 var infoModal = document.querySelector(".app-info__modal");
+var infoOverly = document.querySelector(".app-info__overly");
 var infoModalClose = document.querySelector(".app-info__close");
 var i;
 var count = 60;
@@ -48,13 +48,13 @@ var count = 60;
   });
   // show info about pomodoro technique
   infoIcon.addEventListener("click", function(e){
-    infoModalContainer.style.display = "block";
-    infoModal.style.display = "block";
+    infoModal.classList.add("app-info--show");
+    infoOverly.classList.add("app-info--show");
   });
-  // close modal
+  // close modal with info
   infoModalClose.addEventListener("click", function(e){
-    infoModalContainer.style.display = "none";
-    infoModal.style.display = "none";
+    infoModal.classList.remove("app-info--show");
+    infoOverly.classList.remove("app-info--show");
   });
 
 /*clockTime.innerHTML = workMinutes.textContent + ":" + "00";*/
