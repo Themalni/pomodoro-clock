@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: /*#0a97b7;*/ #55cfd6;
+  overflow: hidden;
 }
 .container {
   max-width: 100%;
@@ -41,22 +42,65 @@ body {
   top: 0.4em;
   right: 0.5em;
 }
-.lnr.lnr-question-circle {
+.lnr.lnr-question-circle,
+.lnr.lnr-cross {
   color: #fef8e7;
   font-size: 30px;
   cursor: pointer;
 }
+.app-info__container {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
 .app-info__modal {
+  display: block;
+  box-sizing: border-box;
   margin: 0 auto;
-  padding: 2em 5em;
-  max-width: 60%;
+  padding: 1em 5em 1.5em;
+  max-width: 600px;
   min-height: 300px;
-  background-color: #ccc;
-  color: #fff;
+  background-color: #ff7272;
+  color: #fef8e7;
   text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px -10px #333;
   position: absolute;
-  top: 8em;
-  left: 30%;
+  top: 6em;
+  left: calc(50% - 300px);
+  z-index: 1;
+  animation: slide .5s 1 ease-in-out;
+}
+@keyframes slide {
+  0% {
+    transform: translate3d(0, 50% ,0);
+  }
+  100% {
+    transform: none;
+  }
+}
+.app-info__close {
+  position: absolute;
+  top: 0.7em;
+  right: 0.7em;
+  z-index: 1;
+}
+.app-info__title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-size: 2.5em;
+}
+.app-info__text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.3em;
 }
 .settings__container {
   margin-top: 3em;
