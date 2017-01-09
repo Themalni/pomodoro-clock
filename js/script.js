@@ -9,7 +9,11 @@ var infoModal = document.querySelector(".app-info__modal");
 var infoOverly = document.querySelector(".app-info__overly");
 var infoModalClose = document.querySelector(".app-info__close");
 var i;
-var count = 60;
+var workSession = "";
+var breakSession = "";
+var zero = "0";
+var seconds;
+
 
   // listening for a button click
   for(i = 0; i < buttons.length; i++){
@@ -21,95 +25,92 @@ var count = 60;
         var workMinutesVal = parseInt(workMinutes.textContent);
         var breakMinutesVal = parseInt(breakMinutes.textContent);
 
+
           // change work and break time
           if(workBtnData == "-" && workMinutesVal > 0){
-            var changeTime = workMinutesVal - 5;
-            workMinutes.innerHTML = changeTime;
+            workSession = workMinutesVal - 5;
+            updateClock(workSession, seconds);
+            workMinutes.innerHTML = workSession + "m";
           }else if(workBtnData == "+" && workMinutesVal < 60){
-            changeTime = workMinutesVal + 5;
-            workMinutes.innerHTML = changeTime;
+            workSession = workMinutesVal + 5;
+            updateClock(workSession, seconds);
+            workMinutes.innerHTML = workSession  + "m";
           }else if(breakBtnData == "-" && breakMinutesVal > 0){
-            changeTime = breakMinutesVal - 5;
-            breakMinutes.innerHTML = changeTime;
+            breakSession = breakMinutesVal - 5;
+            updateClock(breakSession, seconds);
+            breakMinutes.innerHTML = breakSession  + "m";
           }else if(breakBtnData == "+" && breakMinutesVal < 30){
-            changeTime = breakMinutesVal + 5;
-            breakMinutes.innerHTML = changeTime;
+            breakSession = breakMinutesVal + 5;
+            updateClock(breakSession, seconds);
+            breakMinutes.innerHTML = breakSession  + "m";
           }
       });
    }
 
-  // reset work time
-  workTimeReset.addEventListener("click", function(e){
-    workMinutes.innerHTML = 25;
-  });
-  // reset break time
-  breakTimeReset.addEventListener("click", function(e){
-    breakMinutes.innerHTML = 5;
-  });
-  // show info about pomodoro technique
-  infoIcon.addEventListener("click", function(e){
-    infoModal.classList.add("app-info--show");
-    infoOverly.classList.add("app-info--show");
-  });
-  // close modal with info
-  infoModalClose.addEventListener("click", function(e){
-    infoModal.classList.remove("app-info--show");
-    infoOverly.classList.remove("app-info--show");
-  });
+    // reset work time
+    workTimeReset.addEventListener("click", function(e){
+      workMinutes.innerHTML = 25 + "m";
+    });
+    // reset break time
+    breakTimeReset.addEventListener("click", function(e){
+      breakMinutes.innerHTML = 5 + "m";
+    });
+    // show info about pomodoro technique
+    infoIcon.addEventListener("click", function(e){
+      infoModal.classList.add("app-info--show");
+      infoOverly.classList.add("app-info--show");
+    });
+    // close modal with info
+    infoModalClose.addEventListener("click", function(e){
+      infoModal.classList.remove("app-info--show");
+      infoOverly.classList.remove("app-info--show");
+    });
 
-/*clockTime.innerHTML = workMinutes.textContent + ":" + "00";*/
+
 
   // run clock
-  function runTime(){
-    var zero = "0";
-    var minutes = workMinutes.textContent;
-    var totalSec = minutes * 60;
-    var seconds;
+  function countdown(){
+      var minutes = (workSession % 60);
+          seconds = 60;
 
-
-        minutes = Math.floor(totalSec % 3600 / 60);
-        seconds = Math.floor(totalSec % 3600 % 60);
-
-        seconds = 60 + seconds;
-        console.log(seconds);
-        count--;
-
-
-        // stop clock
-        if(count == -1){
-          clearTimeout(countTime);
-        }
-
-    var displayTime = [minutes, seconds].join(":");
-
-    /*clockTime.innerHTML = displayTime;*/
-
-
-
-      /*if(seconds == 0){
-        seconds = 10;*/
-
-
-
-          // add another ziro to minutes
-          if(minutes < 10){
-            minutes = zero + minutes;
-            clockTime.innerHTML = displayTime;
-          }else{
-            clockTime.innerHTML = displayTime;
-          }
-
-          // add another ziro to seconds
-          if(seconds < 10){
+        if(seconds > 0){
+          seconds--;
+            // add another ziro to seconds
+            if(seconds < 10){
               seconds = zero + seconds;
-              clockTime.innerHTML = displayTime;
+              updateClock(seconds);
             }else{
-              clockTime.innerHTML = displayTime;
+              updateClock(minutes);
+              console.log(seconds);
             }
-
+        }else if(minutes > 0){
+          minutes--;
+            // add another ziro to minutes
+            if(minutes < 10){
+              minutes = zero + minutes;
+              updateClock(minutes, seconds);
+            }else{
+              updateClock(minutes, seconds);
+            }
+        }else{
+          clearInterval(countdown);
+        }
   }
 
-  /*var countTime = setInterval(runTime, 1000);*/
+  var countTime = setTimeout(countdown, 1000);
+
+  function updateClock(){
+    if(minutes < 10){
+      minutes = zero + minutes;
+      clockTime.innerHTML = [minutes, seconds].join(":");
+    }else if(showSeconds < 10){
+      seconds = zero + seconds;
+      clockTime.innerHTML = [minutes, seconds].join(":");
+    }else{
+      clockTime.innerHTML = [minutes, seconds].join(":");
+    }
+  }
+
 
   // canvas clock
   function clock(){
@@ -117,10 +118,13 @@ var count = 60;
     var canvasWidth = ctx.canvas.width;
     var canvasHeight = ctx.canvas.height;
 
+
         ctx.strokeStyle = "#fef8e7";
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 8;
         ctx.beginPath();
+        ctx.fillStyle = "#ff7272";
         ctx.arc(canvasWidth / 2, canvasWidth / 2, 100, 0, 6.28, false);
+        ctx.fill();
         ctx.stroke();
   }
 

@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: /*#0a97b7;*/ #55cfd6;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 .container {
   max-width: 100%;
@@ -28,9 +28,9 @@ body {
   margin-top: 0;
   color: #fef8e7;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   text-transform: capitalize;
-  font-size: 1.8em;
+  font-size: 1.7em;
 }
 .app-info__icon {
   text-align: right;
@@ -134,25 +134,31 @@ body {
 }
 .settings__time {
   width: 180px;
-  height: 70px;
+  height: 80px;
   margin: 0 2em;
   text-align: center;
-  border: 2px solid #fef8e7;
+  /*border: 2px solid #fef8e7;*/
   border-radius: 5px;
+  background-color: #ff7272;
 }
 .settings__time-title {
   display: block;
-  width: 120px;
+  /*width: 120px;*/
   margin: 0 auto;
   margin-top: -0.8em;
+  padding: 3px 0;
   background-color: #55cfd6;
-  color: #fff;
+  color:  #ff7272;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.3em;
   position: relative;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #fff;
 }
-.settings__time-title:before {
+/*.settings__time-title:before {
   content: ".";
   display: block;
   font-size: 3em;
@@ -171,44 +177,46 @@ body {
   position: absolute;
   top: -0.66em;
   right: -0.1em;
-}
+}*/
 .settings__time-substract,
 .settings__time-digits,
 .settings__time-add {
   display: inline-block;
   color: #fef8e7;
-  font-size: 2em;
-  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.8em;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
 }
 .settings__time-digits {
-  width: 35px;
+  width: 65px;
 }
 .settings__time-substract,
 .settings__time-add {
-  margin: 0 0.2em;
-  margin-top: -0.2em;
-  font-size: 3em;
+  margin: 0.35em 0.2em 0;
+  font-weight: 300;
   cursor: pointer;
 }
 #clock-canvas {
   position: relative;
   top: 1em;
   left: calc(50% - 102px);
+  z-index: 1;
 }
 .clock-container {
+  margin-bottom: 3em;
   position: relative;
 }
 .clock-time {
   width: 200px;
   color: #fef8e7;
   font-size: 2em;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   position: absolute;
   top: 2.7em;
   left: calc(50% - 40px);
+  z-index: 2;
 }
