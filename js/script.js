@@ -12,7 +12,8 @@ var i;
 var workSession = "";
 var breakSession = "";
 var zero = "0";
-var seconds;
+var seconds = 20;
+var minutes = (workSession % 60);
 
 
   // listening for a button click
@@ -26,22 +27,33 @@ var seconds;
         var breakMinutesVal = parseInt(breakMinutes.textContent);
 
 
+        if(workSession < 10){
+          clockTime.innerHTML = [zero + workSession, seconds].join(":");
+
+        }
+
           // change work and break time
           if(workBtnData == "-" && workMinutesVal > 0){
             workSession = workMinutesVal - 5;
-            updateClock(workSession, seconds);
-            workMinutes.innerHTML = workSession + "m";
+              if(workSession < 10){
+                clockTime.innerHTML = [zero + workSession, seconds].join(":");
+              }else{
+                clockTime.innerHTML = [workSession, seconds].join(":");
+              }
+              workMinutes.innerHTML = workSession + "m";
           }else if(workBtnData == "+" && workMinutesVal < 60){
             workSession = workMinutesVal + 5;
-            updateClock(workSession, seconds);
+              if(workSession < 10){
+                clockTime.innerHTML = [zero + workSession, seconds].join(":");
+              }else{
+                clockTime.innerHTML = [workSession, seconds].join(":");
+              }
             workMinutes.innerHTML = workSession  + "m";
           }else if(breakBtnData == "-" && breakMinutesVal > 0){
             breakSession = breakMinutesVal - 5;
-            updateClock(breakSession, seconds);
             breakMinutes.innerHTML = breakSession  + "m";
           }else if(breakBtnData == "+" && breakMinutesVal < 30){
             breakSession = breakMinutesVal + 5;
-            updateClock(breakSession, seconds);
             breakMinutes.innerHTML = breakSession  + "m";
           }
       });
@@ -70,47 +82,34 @@ var seconds;
 
   // run clock
   function countdown(){
-      var minutes = (workSession % 60);
-          seconds = 60;
+          /*minutes = (workSession % 60);*/
+          /*seconds = 60;*/
 
         if(seconds > 0){
           seconds--;
+          console.log(seconds);
             // add another ziro to seconds
             if(seconds < 10){
               seconds = zero + seconds;
-              updateClock(seconds);
+              clockTime.innerHTML = [minutes, seconds].join(":");
             }else{
-              updateClock(minutes);
-              console.log(seconds);
+              clockTime.innerHTML = [minutes, seconds].join(":");
             }
         }else if(minutes > 0){
           minutes--;
             // add another ziro to minutes
             if(minutes < 10){
               minutes = zero + minutes;
-              updateClock(minutes, seconds);
+              clockTime.innerHTML = [minutes, seconds].join(":");
             }else{
-              updateClock(minutes, seconds);
+              clockTime.innerHTML = [minutes, seconds].join(":");
             }
         }else{
-          clearInterval(countdown);
+          clearInterval(countTime);
         }
   }
 
-  var countTime = setTimeout(countdown, 1000);
-
-  function updateClock(){
-    if(minutes < 10){
-      minutes = zero + minutes;
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }else if(showSeconds < 10){
-      seconds = zero + seconds;
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }else{
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }
-  }
-
+  var countTime = setInterval(countdown, 1000);
 
   // canvas clock
   function clock(){

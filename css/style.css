@@ -206,8 +206,32 @@ body {
   z-index: 1;
 }
 .clock-container {
-  margin-bottom: 3em;
+  margin-bottom: 6em;
   position: relative;
+}
+.clock-container__play,
+.clock-container__pause,
+.clock-container__stop {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: -4em;
+  left: calc(50% - 20px);
+  z-index: 2;
+  cursor: pointer;
+}
+.clock-container__play {
+  bottom: -4em;
+  left: calc(50% - 75px);
+}
+.clock-container__pause {
+  bottom: -4em;
+  left: calc(50% - 20px);
+
+}
+.clock-container__stop {
+  bottom: -4em;
+  left: calc(50% + 35px);
 }
 .clock-time {
   width: 200px;
