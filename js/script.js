@@ -31,7 +31,10 @@ var minutes = "";
         var workMinutesVal = parseInt(workMinutes.textContent);
         var breakMinutesVal = parseInt(breakMinutes.textContent);
 
-          // change work and break time
+        clearInterval(countTime);
+        seconds = 60;
+
+          // change work time
           if(workBtnData == "-" && workMinutesVal > 0){
             workSession = workMinutesVal - 5;
               if(workSession < 10){
@@ -48,6 +51,7 @@ var minutes = "";
                 clockTime.innerHTML = [workSession, "00"].join(":");
               }
             workMinutes.innerHTML = workSession  + "m";
+          // change break time
           }else if(breakBtnData == "-" && breakMinutesVal > 0){
             breakSession = breakMinutesVal - 5;
             breakMinutes.innerHTML = breakSession  + "m";
@@ -95,7 +99,9 @@ var minutes = "";
             }else{
               clockTime.innerHTML = [minutes, seconds].join(":");
             }
-            if(minutes > 0){
+
+            if(minutes === 0){
+              minutes = breakSession;
               minutes--;
                 // add another ziro to minutes
                 if(minutes < 10){
@@ -104,7 +110,16 @@ var minutes = "";
                 }else{
                   clockTime.innerHTML = [minutes, seconds].join(":");
                 }
-        }
+            }else if(minutes > 0){
+              minutes--;
+                // add another ziro to minutes
+                if(minutes < 10){
+                  minutes = zero + minutes;
+                  clockTime.innerHTML = [minutes, seconds].join(":");
+                }else{
+                  clockTime.innerHTML = [minutes, seconds].join(":");
+                }
+           }
         }else{
           clearInterval(countTime);
         }
@@ -123,13 +138,25 @@ var minutes = "";
     clearInterval(countTime);
 
         seconds = 60;
-        clockTime.innerHTML = [workSession, "00"].join(":");
+          if(workSession){
+            clockTime.innerHTML = [workSession, "00"].join(":");
+            console.log("workSession");
+          }else if(breakSession){
+            clockTime.innerHTML = [10, "00"].join(":");
+            console.log("breakSession");
+          }
 
       // add another ziro to minutes
       if(workSession < 10){
         clockTime.innerHTML = [zero + workSession, "00"].join(":");
       }else{
         clockTime.innerHTML = [workSession, "00"].join(":");
+      }
+      // add another ziro to minutes
+      if(breakSession < 10){
+        clockTime.innerHTML = [zero + breakSession, "00"].join(":");
+      }else{
+        clockTime.innerHTML = [breakSession, "00"].join(":");
       }
   });
 
@@ -150,6 +177,3 @@ var minutes = "";
   }
 
   clock();
-
-// add start pause and stop buttons
-// make minutes to go down by one
