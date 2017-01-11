@@ -8,12 +8,17 @@ var infoIcon = document.querySelector(".app-info__icon");
 var infoModal = document.querySelector(".app-info__modal");
 var infoOverly = document.querySelector(".app-info__overly");
 var infoModalClose = document.querySelector(".app-info__close");
+var playBtn = document.querySelector(".clock-container__play");
+var pauseBtn = document.querySelector(".clock-container__pause");
+var stopBtn = document.querySelector(".clock-container__stop");
 var i;
-var workSession = "";
-var breakSession = "";
+var countTime;
+var workSession = 25;
+var breakSession = 5;
 var zero = "0";
-var seconds = 20;
-var minutes = (workSession % 60);
+var seconds = 60;
+var minutes = "";
+
 
 
   // listening for a button click
@@ -26,27 +31,21 @@ var minutes = (workSession % 60);
         var workMinutesVal = parseInt(workMinutes.textContent);
         var breakMinutesVal = parseInt(breakMinutes.textContent);
 
-
-        if(workSession < 10){
-          clockTime.innerHTML = [zero + workSession, seconds].join(":");
-
-        }
-
           // change work and break time
           if(workBtnData == "-" && workMinutesVal > 0){
             workSession = workMinutesVal - 5;
               if(workSession < 10){
-                clockTime.innerHTML = [zero + workSession, seconds].join(":");
+                clockTime.innerHTML = [zero + workSession, "00"].join(":");
               }else{
-                clockTime.innerHTML = [workSession, seconds].join(":");
+                clockTime.innerHTML = [workSession, "00"].join(":");
               }
               workMinutes.innerHTML = workSession + "m";
           }else if(workBtnData == "+" && workMinutesVal < 60){
             workSession = workMinutesVal + 5;
               if(workSession < 10){
-                clockTime.innerHTML = [zero + workSession, seconds].join(":");
+                clockTime.innerHTML = [zero + workSession, "00"].join(":");
               }else{
-                clockTime.innerHTML = [workSession, seconds].join(":");
+                clockTime.innerHTML = [workSession, "00"].join(":");
               }
             workMinutes.innerHTML = workSession  + "m";
           }else if(breakBtnData == "-" && breakMinutesVal > 0){
@@ -80,10 +79,11 @@ var minutes = (workSession % 60);
 
 
 
+
   // run clock
   function countdown(){
-          /*minutes = (workSession % 60);*/
-          /*seconds = 60;*/
+
+        minutes = workSession;
 
         if(seconds > 0){
           seconds--;
@@ -95,21 +95,43 @@ var minutes = (workSession % 60);
             }else{
               clockTime.innerHTML = [minutes, seconds].join(":");
             }
-        }else if(minutes > 0){
-          minutes--;
-            // add another ziro to minutes
-            if(minutes < 10){
-              minutes = zero + minutes;
-              clockTime.innerHTML = [minutes, seconds].join(":");
-            }else{
-              clockTime.innerHTML = [minutes, seconds].join(":");
-            }
+            if(minutes > 0){
+              minutes--;
+                // add another ziro to minutes
+                if(minutes < 10){
+                  minutes = zero + minutes;
+                  clockTime.innerHTML = [minutes, seconds].join(":");
+                }else{
+                  clockTime.innerHTML = [minutes, seconds].join(":");
+                }
+        }
         }else{
           clearInterval(countTime);
         }
   }
 
-  var countTime = setInterval(countdown, 1000);
+  // start clock
+  playBtn.addEventListener("click", function(e){
+    countTime = setInterval(countdown, 1000);
+  });
+  // pause clock
+  pauseBtn.addEventListener("click", function(e){
+    clearInterval(countTime);
+  });
+  // stop clock
+  stopBtn.addEventListener("click", function(e){
+    clearInterval(countTime);
+
+        seconds = 60;
+        clockTime.innerHTML = [workSession, "00"].join(":");
+
+      // add another ziro to minutes
+      if(workSession < 10){
+        clockTime.innerHTML = [zero + workSession, "00"].join(":");
+      }else{
+        clockTime.innerHTML = [workSession, "00"].join(":");
+      }
+  });
 
   // canvas clock
   function clock(){
