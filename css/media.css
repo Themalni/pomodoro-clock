@@ -11,8 +11,8 @@
     transform: none;
   }
   .container .container__title {
-    margin-top: 1em;
-    font-size: 4em;
+    margin-top: 0.5em;
+    font-size: 3.5em;
   }
   .app-info__modal {
     box-sizing: padding-box;
