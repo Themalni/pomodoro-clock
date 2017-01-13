@@ -16,9 +16,8 @@ var countTime;
 var workSession = 25;
 var breakSession = 5;
 var zero = "0";
-var seconds = 60;
+var seconds = 10;
 var minutes = "";
-
 
 
   // listening for a button click
@@ -63,13 +62,13 @@ var minutes = "";
    }
 
     // reset work time
-    workTimeReset.addEventListener("click", function(e){
+    /*workTimeReset.addEventListener("click", function(e){
       workMinutes.innerHTML = 25 + "m";
     });
     // reset break time
-    breakTimeReset.addEventListener("click", function(e){
+    /*breakTimeReset.addEventListener("click", function(e){
       breakMinutes.innerHTML = 5 + "m";
-    });
+    });*/
     // show info about pomodoro technique
     infoIcon.addEventListener("click", function(e){
       infoModal.classList.add("app-info--show");
@@ -120,9 +119,22 @@ var minutes = "";
                   clockTime.innerHTML = [minutes, seconds].join(":");
                 }
            }
-        }else{
+        }else if(seconds === 0){
+          console.log("x");
+          seconds = 10;
+          minutes = parseInt(clockTime.textContent);
+          minutes--;
+          seconds--;
+          clockTime.innerHTML = [minutes, zero + seconds].join(":");
+        }/*else{
           clearInterval(countTime);
-        }
+          console.log("x");
+          seconds = 10;
+          minutes = parseInt(clockTime.textContent);
+          minutes--;
+          seconds--;
+          clockTime.innerHTML = [minutes, zero + seconds].join(":");
+        }*/
   }
 
   // start clock
@@ -160,20 +172,5 @@ var minutes = "";
       }
   });
 
-  // canvas clock
-  function clock(){
-    var ctx = document.querySelector("#clock-canvas").getContext("2d");
-    var canvasWidth = ctx.canvas.width;
-    var canvasHeight = ctx.canvas.height;
 
-
-        ctx.strokeStyle = "#fef8e7";
-        ctx.lineWidth = 8;
-        ctx.beginPath();
-        ctx.fillStyle = "#ff7272";
-        ctx.arc(canvasWidth / 2, canvasWidth / 2, 100, 0, 6.28, false);
-        ctx.fill();
-        ctx.stroke();
-  }
-
-  clock();
+// add sounds

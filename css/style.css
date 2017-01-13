@@ -1,26 +1,28 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: /*#0a97b7;*/ #55cfd6;
-  /*overflow: hidden;*/
+  background-color: #73aaba;
 }
 .container {
-  max-width: 100%;
-  margin: 0;
+  max-width: 50%;
+  margin: 1em auto;
   padding: 2em 0;
+  background-color: #225170;
   text-align: center;
+  border-radius: 10px;
   position: relative;
+  box-shadow: 0 10px 10px -5px #333;
 }
 .container .container__title {
   margin: 0;
   color: #fef8e7;
-  font-size: 3.3em;
+  font-size: 3em;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
 .lnr.lnr-history {
   margin: 0 3px;
-  font-size: 25px;
+  font-size: 23px;
   position: relative;
   bottom: 1px;
 }
@@ -30,7 +32,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
   text-transform: capitalize;
-  font-size: 1.7em;
+  font-size: 1.6em;
 }
 .app-info__icon {
   text-align: right;
@@ -39,8 +41,8 @@ body {
   font-weight: 300;
   font-size: 1em;
   position: absolute;
-  top: 0.4em;
-  right: 0.5em;
+  top: 0.6em;
+  right: 0.7em;
 }
 .lnr.lnr-question-circle,
 .lnr.lnr-cross {
@@ -76,10 +78,10 @@ body {
 }
 .app-info__modal {
   box-sizing: border-box;
-  padding: 1em 5em 1.5em;
+  padding: 0.5em 2em 1.5em;
   width: 100%;
   height: 100%;;
-  background-color: #ff7272;
+  background-color: #ef4c7d;
   color: #fef8e7;
   text-align: center;
   border-radius: 10px;
@@ -105,6 +107,7 @@ body {
   z-index: 1;
 }
 .app-info__title {
+  margin-bottom: 0;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 600;
   font-size: 2.5em;
@@ -115,75 +118,45 @@ body {
   font-size: 1.3em;
 }
 .settings__container {
-  margin-top: 3em;
+  margin-top: 1em;
+  padding: 1em 0;
   width: auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
 }
-.settings__break-reset {
-  position: relative;
-  left: -1.8em;
+.settings__time__break-icon {
+  width: 40px;
+  height: 40px;
+  margin-top: 0.8em;
 }
-.lnr.lnr-undo {
+.settings__break-reset,
+.settings__work-reset {
+  margin-top: 0.5em;
+}
+.lnr-undo {
+  display: block;
   color: #fef8e7;
-  font-size: 25px;
+  font-size: 30px;
   cursor: pointer;
   transform: rotateZ(90deg);
 }
 .settings__time {
-  width: 180px;
-  height: 80px;
   margin: 0 2em;
+  width: 220px;
+  background-color: #ef4c7d;
   text-align: center;
-  /*border: 2px solid #fef8e7;*/
-  border-radius: 5px;
-  background-color: #ff7272;
-}
-.settings__time-title {
-  display: block;
-  /*width: 120px;*/
-  margin: 0 auto;
-  margin-top: -0.8em;
-  padding: 3px 0;
-  background-color: #55cfd6;
-  color:  #ff7272;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 1.3em;
+  border-radius: 15px;
+  overflow: hidden;
   position: relative;
-  border-radius: 5px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  background-color: #fff;
 }
-/*.settings__time-title:before {
-  content: ".";
-  display: block;
-  font-size: 3em;
-  margin: 0;
-  color: #fef8e7;
-  position: absolute;
-  top: -0.66em;
-  left: -0.1em;
-}
-.settings__time-title:after  {
-  content: ".";
-  display: block;
-  font-size: 3em;
-  margin: 0;
-  color: #fef8e7;
-  position: absolute;
-  top: -0.66em;
-  right: -0.1em;
-}*/
 .settings__time-substract,
 .settings__time-digits,
 .settings__time-add {
-  display: inline-block;
-  color: #fef8e7;
-  font-size: 1.8em;
+  margin: 0.3em auto;
+  color: #fff;;
+  font-size: 1.6em;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   -webkit-user-select: none;
@@ -191,19 +164,30 @@ body {
   -ms-user-select: none;
 }
 .settings__time-digits {
-  width: 65px;
+  display: block;
+  margin: 0 auto 0.4em;
+  width: 60px;
+  font-size: 1.8em;
 }
 .settings__time-substract,
 .settings__time-add {
-  margin: 0.35em 0.2em 0;
-  font-weight: 300;
+  display: block;
+  width: 30px;
+  background-color: rgba(115, 170, 186, 0.7);
+  padding: 5px 10px;
+  margin-top: 0;
   cursor: pointer;
+  position: absolute;
 }
-#clock-canvas {
-  position: relative;
-  top: 1em;
-  left: calc(50% - 102px);
-  z-index: 1;
+.settings__time-substract {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.settings__time-add {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
 }
 .clock-container {
   margin-bottom: 6em;
@@ -215,32 +199,34 @@ body {
   width: 40px;
   height: 40px;
   position: absolute;
-  bottom: -4em;
   left: calc(50% - 20px);
-  z-index: 2;
   cursor: pointer;
 }
 .clock-container__play {
-  bottom: -4em;
+  bottom: -3em;
   left: calc(50% - 75px);
 }
 .clock-container__pause {
   bottom: -4em;
   left: calc(50% - 20px);
-
 }
 .clock-container__stop {
-  bottom: -4em;
+  bottom: -3em;
   left: calc(50% + 35px);
 }
 .clock-time {
-  width: 200px;
+  margin: 0 auto 1em;
   color: #fef8e7;
-  font-size: 2em;
+  font-size: 3.5em;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  position: absolute;
-  top: 2.7em;
-  left: calc(50% - 40px);
-  z-index: 2;
+}
+.clock-session {
+  width: 130px;
+  margin: 1em auto 0.5em;
+  padding-bottom: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #fef8e7;
+  border-bottom: 1px solid #fef8e7;;
 }

@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 
-
 </head>
 <body>
   <div class="container">
@@ -22,41 +21,39 @@
       <div class="app-info__modal">
         <span class="app-info__close lnr lnr-cross"></span>
         <h1 class="app-info__title">What is Pomodoro?</h1>
-        <p class="app-info__text">Pomodoro is a technique with purpose to improve productivity mesured by a  timer. Work or study time is getting split into smaller chanks with breakes taken in between. For example, you can have 4 work sessions of 25 minutes each with 5 minutes of break taken after every session.</p>
+        <p class="app-info__text">Pomodoro is a technique with purpose to improve productivity mesured by a  timer. Work or study time is getting split into smaller chanks with breakes taken in between.  For example, you can have 4 work sessions of 25 minutes each with 5 minutes of break taken after every session.  Let's get productive!</p>
       </div>
     </div>
     <div class="app-info__overly"></div>
     <h1 class="container__title">Pomodoro Cl<span class="lnr lnr-history"></span>ck</h1>
     <h3 class="container__description">Organize your time</h3>
     <div class="settings__container">
-      <span class="settings__work-reset lnr lnr-undo"></span>
       <div class="settings__time">
         <div class="settings__time-work">
-          <h3 class="settings__time-title">work time</h3>
+          <img src="bean.svg" class="settings__time__break-icon"></span>
           <span class="settings__time-button settings__time-substract" data-work-btn="-">-</span>
           <span class="settings__time-digits">25m</span>
           <span class="settings__time-button settings__time-add" data-work-btn="+">+</span>
+          <!--<span class="settings__work-reset lnr lnr-undo"></span>-->
         </div>
       </div>
       <div class="settings__time">
         <div class="settings__time-break">
-          <h3 class="settings__time-title">break time</h3>
+          <img src="bean.svg" class="settings__time__break-icon"></span>
           <span class="settings__time-button settings__time-substract" data-break-btn="-">-</span>
           <span class="settings__time-digits">5m</span>
           <span class="settings__time-button settings__time-add" data-break-btn="+">+</span>
         </div>
       </div>
-      <span class="settings__break-reset lnr lnr-undo"></span>
     </div>
+    <div class="clock-container">
+      <h2 class="clock-session">Work</h2>
+      <div class="clock-time">25:00</div>
+      <img src="play_btn.svg" class="clock-container__play">
+      <img src="pause_btn.svg" class="clock-container__pause">
+      <img src="stop_btn.svg" class="clock-container__stop">
+    <div>
   </div>
-  <div class="clock-container">
-    <img src="play_btn.svg" class="clock-container__play">
-    <img src="pause_btn.svg" class="clock-container__pause">
-    <img src="stop_btn.svg" class="clock-container__stop">
-    <div class="clock-time">25:00</div>
-    <canvas id="clock-canvas" width="210" height="210"></canvas>
-  <div>
-
 
   <script src="js/script.js"></script>
 </body>
