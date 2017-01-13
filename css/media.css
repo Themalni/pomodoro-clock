@@ -1,4 +1,4 @@
-@media screen and (min-width: 320px) and (max-width: 640px){
+@media screen and (min-width: 360px) and (max-width: 640px){
   .container {
     max-width: 85%;
   }
@@ -6,12 +6,11 @@
     width: 100%;
     max-width: 600px;
     position: absolute;
-    top: 13%;
+    top: 0;
     left: 0;
     transform: none;
   }
   .app-info__modal {
     box-sizing: padding-box;
   }
-
 }
