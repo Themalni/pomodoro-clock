@@ -1,4 +1,4 @@
-@media screen and (min-width: 360px) and (max-width: 640px){
+@media screen and (min-width: 320px) and (max-width: 640px){
   .container {
     max-width: 85%;
   }
@@ -12,5 +12,12 @@
   }
   .app-info__modal {
     box-sizing: padding-box;
+  }
+  .app-info__title {
+    margin-top: 1em;
+    font-size: 3em;
+  }
+  .app-info__text {
+    font-size: 1.5em;
   }
 }
