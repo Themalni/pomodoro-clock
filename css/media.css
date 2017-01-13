@@ -14,6 +14,7 @@
     box-sizing: padding-box;
   }
   .app-info__title {
+    margin-top: 1em;
   font-size: 3em;
 }
   .app-info__text {
