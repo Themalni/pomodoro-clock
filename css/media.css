@@ -13,6 +13,9 @@
   .app-info__modal {
     box-sizing: padding-box;
   }
+  .app-info__title {
+  font-size: 3em;
+}
   .app-info__text {
     font-size: 1.5em;
   }
