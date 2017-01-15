@@ -1,11 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+}
+.app-container {
+  padding: 1em 0 7em;
   background-color: #73aaba;
 }
 .container {
   max-width: 50%;
-  margin: 1em auto;
+  margin: 0em auto;
   padding: 2em 0;
   background-color: #225170;
   text-align: center;
@@ -190,7 +193,8 @@ body {
   transform: translateY(-50%);
 }
 .clock-container {
-  margin-bottom: 6em;
+  max-width: 100%;
+  margin-bottom: 2em;
   position: relative;
 }
 .clock-container__play,
@@ -199,23 +203,22 @@ body {
   width: 40px;
   height: 40px;
   position: absolute;
-  left: calc(50% - 20px);
   cursor: pointer;
 }
 .clock-container__play {
-  bottom: -3em;
+  top: 7.8em;
   left: calc(50% - 75px);
 }
 .clock-container__pause {
-  bottom: -4em;
+  top: 8.8em;
   left: calc(50% - 20px);
 }
 .clock-container__stop {
-  bottom: -3em;
+  top: 7.8em;
   left: calc(50% + 35px);
 }
 .clock-time {
-  margin: 0 auto 1em;
+  margin: 0 auto;
   color: #fef8e7;
   font-size: 3.5em;
   font-family: 'Roboto', sans-serif;
@@ -229,4 +232,25 @@ body {
   font-weight: 300;
   color: #fef8e7;
   border-bottom: 1px solid #fef8e7;;
+}
+.footer {
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+  top: 9em;
+}
+.footer__copyright {
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.1em;
+  color: #fef8e7;
+}
+.footer__social-btn {
+  margin-top: 0.4em;
+}
+.footer__social-btn .fa.fa-twitter-square,
+.footer__social-btn .fa.fa-codepen,
+.footer__social-btn .fa.fa-github-square {
+  color: #ef4c7d;
 }

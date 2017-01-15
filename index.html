@@ -15,47 +15,56 @@
 
 </head>
 <body>
-  <div class="container">
-    <span class="app-info__icon lnr lnr-question-circle"></span>
-    <!-- Modal -->
-    <div class="app-info__container">
-      <div class="app-info__modal">
-        <span class="app-info__close lnr lnr-cross"></span>
-        <h1 class="app-info__title">What is Pomodoro?</h1>
-        <p class="app-info__text">Pomodoro is a technique with purpose to improve productivity mesured by a  timer. Work or study time is getting split into smaller chanks with breakes taken in between.  For example, you can have 4 work sessions of 25 minutes each with 5 minutes of break taken after every session.  Let's get productive!</p>
-      </div>
-    </div>
-    <div class="app-info__overly"></div>
-    <h1 class="container__title">Pomodoro Cl<span class="lnr lnr-history"></span>ck</h1>
-    <h3 class="container__description">Organize your time</h3>
-    <div class="settings__container">
-      <div class="settings__time">
-        <div class="settings__time-work">
-          <img src="images/bean.svg" class="settings__time__break-icon" alt="work icon"></span>
-          <span class="settings__time-button settings__time-substract" data-work-btn="-">-</span>
-          <span class="settings__time-digits">25m</span>
-          <span class="settings__time-button settings__time-add" data-work-btn="+">+</span>
-          <!--<span class="settings__work-reset lnr lnr-undo"></span>-->
+  <div class="app-container">
+    <div class="container">
+      <span class="app-info__icon lnr lnr-question-circle"></span>
+      <!-- Modal -->
+      <div class="app-info__container">
+        <div class="app-info__modal">
+          <span class="app-info__close lnr lnr-cross"></span>
+          <h1 class="app-info__title">What is Pomodoro?</h1>
+          <p class="app-info__text">Pomodoro is a technique with purpose to improve productivity mesured by a  timer. Work or study time is getting split into smaller chanks with breakes taken in between.  For example, you can have 4 work sessions of 25 minutes each with 5 minutes of break taken after every session.  Let's get productive!</p>
         </div>
       </div>
-      <div class="settings__time">
-        <div class="settings__time-break">
-          <img src="images/bean.svg" class="settings__time__break-icon" alt="break icon"></span>
-          <span class="settings__time-button settings__time-substract" data-break-btn="-">-</span>
-          <span class="settings__time-digits">5m</span>
-          <span class="settings__time-button settings__time-add" data-break-btn="+">+</span>
+      <div class="app-info__overly"></div>
+      <h1 class="container__title">Pomodoro Cl<span class="lnr lnr-history"></span>ck</h1>
+      <h3 class="container__description">Organize your time</h3>
+      <div class="settings__container">
+        <div class="settings__time">
+          <div class="settings__time-work">
+            <img src="images/bean.svg" class="settings__time__break-icon" alt="work icon"></span>
+            <span class="settings__time-button settings__time-substract" data-work-btn="-">-</span>
+            <span class="settings__time-digits">25m</span>
+            <span class="settings__time-button settings__time-add" data-work-btn="+">+</span>
+            <!--<span class="settings__work-reset lnr lnr-undo"></span>-->
+          </div>
+        </div>
+        <div class="settings__time">
+          <div class="settings__time-break">
+            <img src="images/bean.svg" class="settings__time__break-icon" alt="break icon"></span>
+            <span class="settings__time-button settings__time-substract" data-break-btn="-">-</span>
+            <span class="settings__time-digits">5m</span>
+            <span class="settings__time-button settings__time-add" data-break-btn="+">+</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="clock-container">
-      <h2 class="clock-session">Work</h2>
-      <div class="clock-time">25:00</div>
-      <img src="images/play_btn.svg" class="clock-container__play" alt="play button">
-      <img src="images/pause_btn.svg" class="clock-container__pause" alt="pause button">
-      <img src="images/stop_btn.svg" class="clock-container__stop" alt="stop button">
-    <div>
-  </div>
-
+      <div class="clock-container">
+        <h2 class="clock-session">Work</h2>
+        <div class="clock-time">25:00</div>
+        <img src="images/play_btn.svg" class="clock-container__play" alt="play button">
+        <img src="images/pause_btn.svg" class="clock-container__pause" alt="pause button">
+        <img src="images/stop_btn.svg" class="clock-container__stop" alt="stop button">
+      <div>
+    </div><!-- END container -->
+    <footer class="footer">
+      <h4 class="footer__copyright">&copy; Dina Blaszczak 2017</h4>
+      <div class="footer__social-btn">
+        <a href="https://twitter.com/TheMalni" target="_blank"><span class="fa fa-twitter-square fa-lg"></span></a>
+        <a href="https://codepen.io/themalni" target="_blank"><span class="fa fa-codepen fa-lg"></span></a>
+        <a href="https://github.com/Themalni" target="_blank"><span class="fa fa-github-square fa-lg"></span></a>
+      </div>
+    </footer>
+  </div><!-- END app-container -->
   <script src="js/script.js"></script>
 </body>
 </html>
