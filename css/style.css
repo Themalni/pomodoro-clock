@@ -3,13 +3,15 @@ body {
   padding: 0;
 }
 .app-container {
-  padding: 1em 0 7em;
+  width: 100%;
+  padding: 1em 0 0;
   background-color: #73aaba;
 }
 .container {
-  max-width: 50%;
-  margin: 0em auto;
-  padding: 2em 0;
+  max-width: 500px;
+  height: auto;
+  margin: 0 auto 0em;
+  padding: 2em 0.7em;
   background-color: #225170;
   text-align: center;
   border-radius: 10px;
@@ -124,14 +126,25 @@ body {
   font-weight: 400;
   font-size: 1.3em;
 }
+/* Flex container */
 .settings__container {
   margin-top: 1em;
   padding: 1em 0;
   width: auto;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
+}
+/* Flex items */
+.settings__time {
+  margin: 0 1em 1em;
+  flex-grow: 1;
+  flex-shrink: 0;
+  background-color: #ef4c7d;
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
 }
 .settings__time__break-icon {
   width: 35px;
@@ -146,22 +159,6 @@ body {
 .settings__break-reset,
 .settings__work-reset {
   margin-top: 0.5em;
-}
-.lnr-undo {
-  display: block;
-  color: #fef8e7;
-  font-size: 30px;
-  cursor: pointer;
-  transform: rotateZ(90deg);
-}
-.settings__time {
-  margin: 0 1.5em 1em;
-  width: 220px;
-  background-color: #ef4c7d;
-  text-align: center;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
 }
 .settings__time-substract,
 .settings__time-digits,
@@ -201,9 +198,10 @@ body {
   right: 0;
   transform: translateY(-50%);
 }
+/*** Clock ***/
 .clock-container {
   max-width: 100%;
-  margin-bottom: 2em;
+  min-height: 220px;
   position: relative;
 }
 .clock-container__play,
@@ -242,11 +240,11 @@ body {
   color: #fef8e7;
   border-bottom: 1px solid #fef8e7;;
 }
+/*** Footer ***/
 .footer {
   max-width: 100%;
+  padding: 1.5em 0;
   text-align: center;
-  position: relative;
-  top: 9em;
 }
 .footer__copyright {
   margin: 0 auto;

@@ -24,4 +24,11 @@
   .app-info__text {
     font-size: 1.5em;
   }
+  .settings__container {
+
+  }
+  .settings__time {
+  min-width: 240px;
+  max-width: 260px;
+
 }

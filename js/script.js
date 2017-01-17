@@ -60,15 +60,6 @@ var minutes = "";
           }
       });
    }
-
-    // reset work time
-    /*workTimeReset.addEventListener("click", function(e){
-      workMinutes.innerHTML = 25 + "m";
-    });
-    // reset break time
-    /*breakTimeReset.addEventListener("click", function(e){
-      breakMinutes.innerHTML = 5 + "m";
-    });*/
     // show info about pomodoro technique
     infoIcon.addEventListener("click", function(e){
       infoModal.classList.add("app-info--show");
@@ -120,7 +111,7 @@ var minutes = "";
                 }
            }
         }else if(seconds === 0){
-          
+
           seconds = 10;
           minutes = parseInt(clockTime.textContent);
           minutes--;
