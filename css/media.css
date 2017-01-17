@@ -11,8 +11,13 @@
     transform: none;
   }
   .container .container__title {
-    margin-top: 0.5em;
+    width: 300px;
+    margin: 0.5em auto 0;
     font-size: 3.5em;
+  }
+  .container__title-icon {
+    width: 28px;
+    height: auto;
   }
   .app-info__modal {
     box-sizing: padding-box;

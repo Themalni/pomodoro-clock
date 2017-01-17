@@ -4,6 +4,7 @@ body {
 }
 .app-container {
   width: 100%;
+  min-height: 100%;
   padding: 1em 0 0;
   background-color: #73aaba;
 }
