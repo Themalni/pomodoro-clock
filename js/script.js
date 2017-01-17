@@ -120,7 +120,7 @@ var minutes = "";
                 }
            }
         }else if(seconds === 0){
-          console.log("x");
+          
           seconds = 10;
           minutes = parseInt(clockTime.textContent);
           minutes--;
