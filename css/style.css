@@ -23,6 +23,10 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
+.container__title-icon {
+  width: 25px;
+  height: auto;
+}
 .lnr.lnr-history {
   margin: 0 3px;
   font-size: 23px;
@@ -130,8 +134,13 @@ body {
   justify-content: center;
 }
 .settings__time__break-icon {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
+  margin-top: 0.8em;
+}
+.settings__time__work-icon {
+  width: 45px;
+  height: 35px;
   margin-top: 0.8em;
 }
 .settings__break-reset,
@@ -200,22 +209,22 @@ body {
 .clock-container__play,
 .clock-container__pause,
 .clock-container__stop {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   position: absolute;
   cursor: pointer;
 }
 .clock-container__play {
   top: 7.8em;
-  left: calc(50% - 75px);
+  left: calc(50% - 77px);
 }
 .clock-container__pause {
   top: 8.8em;
-  left: calc(50% - 20px);
+  left: calc(50% - 24px);
 }
 .clock-container__stop {
   top: 7.8em;
-  left: calc(50% + 35px);
+  left: calc(50% + 29px);
 }
 .clock-time {
   margin: 0 auto;
