@@ -11,6 +11,7 @@ var infoModalClose = document.querySelector(".app-info__close");
 var playBtn = document.querySelector(".clock-container__play");
 var pauseBtn = document.querySelector(".clock-container__pause");
 var stopBtn = document.querySelector(".clock-container__stop");
+var alarm = document.querySelector(".clock-alarm");
 var i;
 var countTime;
 var workSession = 25;
@@ -117,15 +118,16 @@ var minutes = "";
           minutes--;
           seconds--;
           clockTime.innerHTML = [minutes, zero + seconds].join(":");
-        }/*else{
+
+        }else{
           clearInterval(countTime);
-          console.log("x");
+          alarm.play();
           seconds = 10;
           minutes = parseInt(clockTime.textContent);
           minutes--;
           seconds--;
           clockTime.innerHTML = [minutes, zero + seconds].join(":");
-        }*/
+        }
   }
 
   // start clock
