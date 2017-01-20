@@ -35,6 +35,7 @@ var minutes = workSession;
         var breakMinutesVal = parseInt(breakMinutes.textContent);
 
         clearInterval(countTime);
+        clockSession.innerHTML = "Work";
         seconds = 10;
 
           // change work time
@@ -99,8 +100,29 @@ var minutes = workSession;
   function countdown(){
 
         if(minutes == 0 && seconds == 0){
-            clearInterval(countTime);
-            alarm.play();
+            if(clockSession.textContent == "Break"){
+              var sessionsCount = 0;
+
+              if(++sessionsCount === 4){
+                clearInterval(countTime);
+                console.log(sessionsCount);
+              }
+
+
+            }else{
+              alarm.play();
+              minutes = breakSession;
+
+              // add another ziro to minutes
+              if(minutes < 10){
+                minutes = zero + breakSession;
+                clockTime.innerHTML = [minutes, seconds].join(":");
+              }else{
+                clockTime.innerHTML = [minutes, seconds].join(":");
+              }
+              clockSession.innerHTML = "Break";
+            }
+
         }else if(seconds > 0){
           seconds--;
 
@@ -112,7 +134,7 @@ var minutes = workSession;
               clockTime.innerHTML = [minutes, seconds].join(":");
             }
             if(minutes > 0){
-              minutes = (workSession * 60) / 60;
+              minutes = workSession;
               minutes--;
               // add another ziro to minutes
               if(minutes < 10){
@@ -157,15 +179,16 @@ var minutes = workSession;
   // stop clock
   stopBtn.addEventListener("click", function(e){
     clearInterval(countTime);
-      seconds = 60;
+      seconds = 10;
       clockSession.innerHTML = "Work";
 
       // add another ziro to minutes
-      if(workSession < 10){
-        clockTime.innerHTML = [zero + workSession, "00"].join(":");
+      if(parseInt(workMinutes.textContent) < 10){
+        clockTime.innerHTML = [zero + parseInt(workMinutes.textContent), "00"].join(":");
       }else{
-        clockTime.innerHTML = [workSession, "00"].join(":");
+        clockTime.innerHTML = [parseInt(workMinutes.textContent), "00"].join(":");
       }
   });
 // convert audio and change sound
 // add break session to countdown process
+// change seconds to 60
