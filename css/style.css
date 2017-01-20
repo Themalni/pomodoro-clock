@@ -134,7 +134,26 @@ body {
   width: auto;
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
   justify-content: center;
+  position: relative;
+}
+.settings__message {
+  width: 50%;
+  padding: 1px 10px;
+  background-color: rgba(115, 170, 186, 0.6);
+  border-radius: 5px;
+  color: #fef8e7;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transition: 0.5s all;
+  opacity: 0;
 }
 /* Flex items */
 .settings__time {
