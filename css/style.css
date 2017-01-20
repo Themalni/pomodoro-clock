@@ -9,25 +9,25 @@ body {
   background-color: #73aaba;
 }
 .container {
-  max-width: 500px;
+  max-width: 470px;
   height: auto;
   margin: 0 auto 0em;
   padding: 2em 0.7em;
   background-color: #225170;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 20px;
   position: relative;
   box-shadow: 0 10px 10px -5px #333;
 }
 .container .container__title {
   margin: 0;
   color: #fef8e7;
-  font-size: 3em;
+  font-size: 2.5em;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
 .container__title-icon {
-  width: 25px;
+  width: 20.5px;
   height: auto;
 }
 .lnr.lnr-history {
@@ -42,7 +42,7 @@ body {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 400;
   text-transform: capitalize;
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 .app-info__icon {
   text-align: right;
@@ -139,7 +139,7 @@ body {
   position: relative;
 }
 .settings__message {
-  width: 50%;
+  width: 60%;
   padding: 1px 10px;
   background-color: rgba(115, 170, 186, 0.6);
   border-radius: 5px;
@@ -167,13 +167,13 @@ body {
   position: relative;
 }
 .settings__time__break-icon {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   margin-top: 0.8em;
 }
 .settings__time__work-icon {
-  width: 45px;
-  height: 35px;
+  width: 40px;
+  height: 30px;
   margin-top: 0.8em;
 }
 .settings__break-reset,
@@ -184,8 +184,8 @@ body {
 .settings__time-digits,
 .settings__time-add {
   margin: 0.3em auto;
-  color: #fff;;
-  font-size: 1.6em;
+  color: #fff;
+  font-size: 1.4em;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   -webkit-user-select: none;
@@ -194,16 +194,16 @@ body {
 }
 .settings__time-digits {
   display: block;
-  margin: 0 auto 0.4em;
   width: 60px;
-  font-size: 1.8em;
+  margin: 0 auto 0.4em;
+  font-size: 1.6em;
 }
 .settings__time-substract,
 .settings__time-add {
   display: block;
   width: 30px;
   background-color: rgba(115, 170, 186, 0.7);
-  padding: 5px 10px;
+  padding: 4px 8px;
   margin-top: 0;
   cursor: pointer;
   position: absolute;
@@ -221,35 +221,8 @@ body {
 /*** Clock ***/
 .clock-container {
   max-width: 100%;
-  min-height: 220px;
+  min-height: 200px;
   position: relative;
-}
-.clock-container__play,
-.clock-container__pause,
-.clock-container__stop {
-  width: 48px;
-  height: 48px;
-  position: absolute;
-  cursor: pointer;
-}
-.clock-container__play {
-  top: 7.8em;
-  left: calc(50% - 77px);
-}
-.clock-container__pause {
-  top: 8.8em;
-  left: calc(50% - 24px);
-}
-.clock-container__stop {
-  top: 7.8em;
-  left: calc(50% + 29px);
-}
-.clock-time {
-  margin: 0 auto;
-  color: #fef8e7;
-  font-size: 3.5em;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 300;
 }
 .clock-session {
   width: 130px;
@@ -258,8 +231,35 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: #fef8e7;
-  border-bottom: 1px solid #fef8e7;;
+  border-bottom: 1px solid #fef8e7;
 }
+.clock-time {
+  color: #fef8e7;
+  font-size: 3em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+.clock-container__play,
+.clock-container__pause,
+.clock-container__stop {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  cursor: pointer;
+}
+.clock-container__play {
+  top: 7.3em;
+  left: calc(50% - 65px);
+}
+.clock-container__pause {
+  top: 8.3em;
+  left: calc(50% - 20px);
+}
+.clock-container__stop {
+  top: 7.3em;
+  left: calc(50% + 25px);
+}
+
 /*** Footer ***/
 .footer {
   max-width: 100%;
