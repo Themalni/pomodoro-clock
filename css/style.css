@@ -45,11 +45,6 @@ body {
   font-size: 1.4em;
 }
 .app-info__icon {
-  text-align: right;
-  color: #fff;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 300;
-  font-size: 1em;
   position: absolute;
   top: 0.6em;
   right: 0.7em;
@@ -88,7 +83,7 @@ body {
 }
 .app-info__modal {
   box-sizing: border-box;
-  padding: 0.5em 2em 1.5em;
+  padding: 0.5em 3em 1.5em;
   width: 100%;
   height: 100%;
   background-color: #ef4c7d;
@@ -118,18 +113,19 @@ body {
 }
 .app-info__title {
   margin-bottom: 0;
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-size: 2.5em;
 }
 .app-info__text {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
-  font-size: 1.3em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.2em;
+  line-height: 1.4em;
 }
 /* Flex container */
 .settings__container {
-  margin-top: 1em;
+  margin-top: 2em;
   padding: 1em 0;
   width: auto;
   display: flex;
@@ -221,15 +217,42 @@ body {
 /*** Clock ***/
 .clock-container {
   max-width: 100%;
-  min-height: 200px;
+  min-height: 230px;
   position: relative;
+}
+.clock-message {
+  width: 80%;
+  padding: 3px 10px;
+  background-color: rgba(115, 170, 186, 0.6);
+  border-radius: 5px;
+  color: #fef8e7;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  position: absolute;
+  top: -2em;
+  left: 50%;
+  visibility: hidden;
+  transform: translateX(-50%);
+  transition: 0.5s all;
+  opacity: 0;
 }
 .clock-session {
   width: 130px;
-  margin: 0 auto 0.5em;
-  padding-bottom: 7px;
+  margin: 1em auto 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
+  color: #fef8e7;
+  letter-spacing: 1px;
+}
+.clock-session__count {
+  width: 130px;
+  margin: 0 auto 0.6em;
+  padding-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.9em;
+  letter-spacing: 1px;
   color: #fef8e7;
   border-bottom: 1px solid #fef8e7;
 }
@@ -248,15 +271,15 @@ body {
   cursor: pointer;
 }
 .clock-container__play {
-  top: 7.3em;
+  top: 8.3em;
   left: calc(50% - 65px);
 }
 .clock-container__pause {
-  top: 8.3em;
+  top: 9.3em;
   left: calc(50% - 20px);
 }
 .clock-container__stop {
-  top: 7.3em;
+  top: 8.3em;
   left: calc(50% + 25px);
 }
 

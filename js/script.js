@@ -11,15 +11,19 @@ var infoModalClose = document.querySelector(".app-info__close");
 var playBtn = document.querySelector(".clock-container__play");
 var pauseBtn = document.querySelector(".clock-container__pause");
 var stopBtn = document.querySelector(".clock-container__stop");
-var alarm = document.querySelector(".clock-alarm");
 var clockSession = document.querySelector(".clock-session");
 var settingMessage = document.querySelector(".settings__message");
+var clockMessage = document.querySelector(".clock-message");
+var displaySessionsCount = document.querySelector(".clock-session__count");
 var i;
 var countTime;
+var notification;
+var sessionsCountWork = 1;
+var sessionsCountBreak = 1;
 var workSession = 25;
 var breakSession = 5;
 var zero = "0";
-var seconds = 10;
+var seconds = 60;
 var minutes = workSession;
 
 /******  Work and break session settings  ******/
@@ -36,13 +40,13 @@ var minutes = workSession;
 
         clearInterval(countTime);
         clockSession.innerHTML = "Work";
-        seconds = 10;
+        seconds = 60;
 
           // change work time
-          if(workBtnData == "-" && workMinutesVal > 5){
-            workSession = workMinutesVal - 5;
-              if(workSession == 5){
-                settingMessage.innerHTML = "You can't work less than 5 minutes!";
+          if(workBtnData == "-" && workMinutesVal > 1){
+            workSession = workMinutesVal - 1;
+              if(workSession == 1){
+                settingMessage.innerHTML = "You should work at lest 15 minutes!";
                 settingMessage.style.visibility = "visible";
                 settingMessage.style.opacity = 1;
                 setTimeout(hideMessage, 3000);
@@ -80,8 +84,13 @@ var minutes = workSession;
 
 /******  Hide settings Message  ******/
    function hideMessage(){
-     settingMessage.style.visibility = "hidden";
-     settingMessage.style.opacity = 0;
+     if(settingMessage.style.visibility == "visible"){
+       settingMessage.style.visibility = "hidden";
+       settingMessage.style.opacity = 0;
+     }else if(clockMessage.style.visibility == "visible"){
+       clockMessage.style.visibility = "hidden";
+       clockMessage.style.opacity = 0;
+     }
    }
 
 /******  Modal window  ******/
@@ -96,22 +105,35 @@ var minutes = workSession;
     infoOverly.classList.remove("app-info--show");
   });
 
-/******  Clock Countdown  ******/
+/******  Clock  ******/
+
+// Timeout
+function runClock(){
+  displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
+    if(sessionsCountWork > 4){
+      clearInterval(countTime);
+      minutes = zero + 0;
+      displaySessionsCount.innerHTML = "Session 4";
+      clockTime.innerHTML = [minutes, seconds].join(":");
+      clockMessage.style.visibility = "visible";
+      clockMessage.style.opacity = 1;
+      setTimeout(hideMessage, 60000);
+    }else{
+      countdown();
+    }
+}
+
+  // Countdown time
   function countdown(){
 
         if(minutes == 0 && seconds == 0){
-            if(clockSession.textContent == "Break"){
-              var sessionsCount = 0;
 
-              if(++sessionsCount === 4){
-                clearInterval(countTime);
-                console.log(sessionsCount);
-              }
-
-
-            }else{
-              alarm.play();
+            if(clockSession.textContent == "Work"){
+              notification = new Audio("sounds/bird.mp3");
+              notification.play();
               minutes = breakSession;
+              sessionsCountBreak++;
+              console.log("Break - " + sessionsCountBreak);
 
               // add another ziro to minutes
               if(minutes < 10){
@@ -121,6 +143,22 @@ var minutes = workSession;
                 clockTime.innerHTML = [minutes, seconds].join(":");
               }
               clockSession.innerHTML = "Break";
+            }else{
+              sessionsCountWork++;
+              console.log("Work - " + sessionsCountWork);
+              notification = new Audio("sounds/elevator.mp3");
+              notification.play();
+              workSession = parseInt(workMinutes.textContent);
+              minutes = workSession;
+
+              // add another ziro to minutes
+              if(minutes < 10){
+                minutes = zero + workSession;
+                clockTime.innerHTML = [minutes, seconds].join(":");
+              }else{
+                clockTime.innerHTML = [minutes, seconds].join(":");
+              }
+              clockSession.innerHTML = "Work";
             }
 
         }else if(seconds > 0){
@@ -146,9 +184,10 @@ var minutes = workSession;
             }
         }else{
           workSession = minutes;
-          seconds = 10;
+          seconds = 60;
           seconds--;
           minutes--;
+
           // add another ziro to seconds
           if(seconds < 10){
             seconds = zero + seconds;
@@ -170,7 +209,7 @@ var minutes = workSession;
 
   // start clock
   playBtn.addEventListener("click", function(e){
-    countTime = setInterval(countdown, 1000);
+    countTime = setInterval(runClock, 1000);
   });
   // pause clock
   pauseBtn.addEventListener("click", function(e){
@@ -178,8 +217,9 @@ var minutes = workSession;
   });
   // stop clock
   stopBtn.addEventListener("click", function(e){
-    clearInterval(countTime);
+      clearInterval(countTime);
       seconds = 10;
+      displaySessionsCount.innerHTML = "Session 1";
       clockSession.innerHTML = "Work";
 
       // add another ziro to minutes
@@ -189,6 +229,3 @@ var minutes = workSession;
         clockTime.innerHTML = [parseInt(workMinutes.textContent), "00"].join(":");
       }
   });
-// convert audio and change sound
-// add break session to countdown process
-// change seconds to 60
