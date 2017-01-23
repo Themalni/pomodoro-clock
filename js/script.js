@@ -46,7 +46,7 @@ for(i = 0; i < buttonsLength; i++){
     if(workBtnData == "-" && workMinutesVal > 1){
       workSession = workMinutesVal - 1;
       if(workSession == 1){
-        settingsText = "You should work for at least " + "15 minutes!";
+        settingsText = "You should work at least " + "15 minutes!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }
