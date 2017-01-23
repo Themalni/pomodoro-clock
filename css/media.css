@@ -61,4 +61,7 @@
   .clock-container__stop {
     left: calc(50% + 28px);
   }
+  .fa.fa-lg {
+    font-size: 2em;
+  }
 }
