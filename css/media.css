@@ -34,10 +34,10 @@
   }
   .app-info__title {
     margin-top: 1em;
-    font-size: 2.3em;
+    font-size: 2.5em;
   }
   .app-info__text {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   .settings__message {
     width: 90%;
@@ -45,5 +45,20 @@
   .settings__time {
     min-width: 240px;
     max-width: 260px;
+  }
+  .clock-container__play,
+  .clock-container__pause,
+  .clock-container__stop {
+    width: 46px;
+    height: 46px;
+  }
+  .clock-container__play {
+    left: calc(50% - 68px);
+  }
+  .clock-container__pause {
+    left: calc(50% - 23px);
+  }
+  .clock-container__stop {
+    left: calc(50% + 28px);
   }
 }
