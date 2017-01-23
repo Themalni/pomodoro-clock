@@ -10,10 +10,11 @@ var playBtn = document.querySelector(".clock-container__play");
 var pauseBtn = document.querySelector(".clock-container__pause");
 var stopBtn = document.querySelector(".clock-container__stop");
 var clockSession = document.querySelector(".clock-session");
-var settingMessage = document.querySelector(".settings__message");
+var settingsMessage = document.querySelector(".settings__message");
 var clockMessage = document.querySelector(".clock-message");
 var displaySessionsCount = document.querySelector(".clock-session__count");
 var i;
+var buttonsLength = buttons.length;
 var countTime;
 var notification;
 var sessionsCountWork = 1;
@@ -27,7 +28,7 @@ var minutes = workSession;
 /******  Work and break session settings  ******/
 
   // listening for a button click
-for(i = 0; i < buttons.length; i++){
+for(i = 0; i < buttonsLength; i++){
   var clickedBtn = buttons[i];
 
   clickedBtn.addEventListener("click", function(e){
@@ -44,10 +45,8 @@ for(i = 0; i < buttons.length; i++){
     if(workBtnData == "-" && workMinutesVal > 1){
       workSession = workMinutesVal - 1;
       if(workSession == 1){
-        settingMessage.innerHTML = "You should work at lest 15 minutes!";
-        settingMessage.style.visibility = "visible";
-        settingMessage.style.opacity = 1;
-        setTimeout(hideMessage, 3000);
+        showMessage(settingsMessage, 15);
+        setTimeout(hideMessage(settingsMessage), 3000);
       }
       if(workSession < 10){
         clockTime.innerHTML = [zero + workSession, "00"].join(":");
@@ -67,10 +66,8 @@ for(i = 0; i < buttons.length; i++){
     }else if(breakBtnData == "-" && breakMinutesVal > 1){
       breakSession = breakMinutesVal - 1;
       if(breakSession == 1){
-        settingMessage.innerHTML = "You should rest at least 1 minute!";
-        settingMessage.style.visibility = "visible";
-        settingMessage.style.opacity = 1;
-        setTimeout(hideMessage, 3000);
+        showMessage(settingsMessage, 1);
+        setTimeout(hideMessage(settingsMessage), 3000);
       }
       breakMinutes.innerHTML = breakSession  + "m";
     }else if(breakBtnData == "+" && breakMinutesVal < 30){
@@ -80,16 +77,20 @@ for(i = 0; i < buttons.length; i++){
   });
 }
 
-/******  Hide settings Message  ******/
-function hideMessage(){
-  if(settingMessage.style.visibility == "visible"){
-    settingMessage.style.visibility = "hidden";
-    settingMessage.style.opacity = 0;
-  }else if(clockMessage.style.visibility == "visible"){
-    clockMessage.style.visibility = "hidden";
-    clockMessage.style.opacity = 0;
-  }
+/******  Show settings Message  ******/
+function showMessage(message, min){
+  message.innerHTML = "You should rest at least " + min + (min > 10 ? " minutes!" : " minute!");
+  message.style.visibility = "visible";
+  message.style.opacity = 1;
+  console.log("I'm working, but not showing message!");
 }
+
+/******  Hide settings Message  ******/
+function hideMessage(message){
+  message.style.visibility = "hidden";
+  message.style.opacity = 0;
+}
+
 
 /******  Modal window  ******/
 // show info about pomodoro technique
@@ -114,8 +115,7 @@ function runClock(){
     clockSession.innerHTML = "Work";
     displaySessionsCount.innerHTML = "Session 4";
     clockTime.innerHTML = [minutes, seconds].join(":");
-    clockMessage.style.visibility = "visible";
-    clockMessage.style.opacity = 1;
+    showMessage(clockMessage, 30);
     setTimeout(hideMessage, 60000);
 
   }else{
@@ -227,6 +227,6 @@ stopBtn.addEventListener("click", function(){
     clockTime.innerHTML = [parseInt(workMinutes.textContent), "00"].join(":");
   }
 });
-// sort out break sessions, reduce them to 3
+
 // correct media queries view height and app title
 // prevent session time show before stop of clock
