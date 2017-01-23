@@ -53,7 +53,7 @@
     height: 46px;
   }
   .clock-container__play {
-    left: calc(50% - 68px);
+    left: calc(50% - 71px);
   }
   .clock-container__pause {
     left: calc(50% - 23px);
