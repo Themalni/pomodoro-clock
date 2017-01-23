@@ -1,6 +1,6 @@
 @media screen and (min-width: 320px) and (max-width: 640px){
   body {
-    font-size: 110%;
+    font-size: 120%;
   }
   .main-container {
     max-width: 85%;
@@ -14,7 +14,7 @@
     transform: none;
   }
   .title__container {
-    margin-top: 1em;
+    margin-top: 2em;
   }
   .container .title {
     width: 300px;
@@ -33,13 +33,13 @@
     font-size: 3em;
   }
   .app-info__text {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   .settings__message {
     width: 90%;
   }
   .settings__time {
-  min-width: 240px;
-  max-width: 260px;
-
+    min-width: 240px;
+    max-width: 260px;
+  }
 }
