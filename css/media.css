@@ -1,6 +1,8 @@
 @media screen and (min-width: 320px) and (max-width: 640px){
   body {
     font-size: 120%;
+  }
+  .app-container {
     overflow: hidden;
   }
   .main-container {
@@ -23,7 +25,7 @@
     font-size: 3.5em;
   }
   .title__icon {
-    width: 24px;
+    width: 22px;
     height: auto;
   }
   .app-info__modal {
@@ -32,7 +34,7 @@
   }
   .app-info__title {
     margin-top: 1em;
-    font-size: 2em;
+    font-size: 2.3em;
   }
   .app-info__text {
     font-size: 1.2em;
