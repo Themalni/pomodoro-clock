@@ -50,20 +50,15 @@ for(i = 0; i < buttonsLength; i++){
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }
-      if(workSession < 10){
-        clockTime.innerHTML = [zero + workSession, "00"].join(":");
-      }else{
-        clockTime.innerHTML = [workSession, "00"].join(":");
-      }
+      displayTime(workSession, 0);
       workMinutes.innerHTML = workSession + "m";
+
     }else if(workBtnData == "+" && workMinutesVal < 60){
-      workSession = workMinutesVal + 5;
-      if(workSession < 10){
-        clockTime.innerHTML = [zero + workSession, "00"].join(":");
-      }else{
-        clockTime.innerHTML = [workSession, "00"].join(":");
-      }
+      workSession = workMinutesVal + 1;
+      seconds = "00";
+      displayTime(workSession, 0);
       workMinutes.innerHTML = workSession  + "m";
+
     // change break time
     }else if(breakBtnData == "-" && breakMinutesVal > 1){
       breakSession = breakMinutesVal - 1;
@@ -78,6 +73,32 @@ for(i = 0; i < buttonsLength; i++){
       breakMinutes.innerHTML = breakSession  + "m";
     }
   });
+}
+
+function displayRunningTime(sessionName, min, sec){
+  if(min < 10){
+    min = zero + sessionName;
+    sec = zero + seconds;
+    clockTime.innerHTML = [min, sec].join(":");
+  }else if(sec < 10){
+    sec = zero + seconds;
+    clockTime.innerHTML = [min, sec].join(":");
+  }else{
+    clockTime.innerHTML = [min, sec].join(":");
+  }
+}
+
+function displayTime(min, sec){
+  if(min < 10){
+    min = zero + min;
+    sec = zero + sec;
+    clockTime.innerHTML = [min, sec].join(":");
+  }else if(sec < 10){
+    sec = zero + sec;
+    clockTime.innerHTML = [min, sec].join(":");
+  }else{
+    clockTime.innerHTML = [min, sec].join(":");
+  }
 }
 
 /******  Show Message  ******/
@@ -112,14 +133,13 @@ function runClock(){
   displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
   if(sessionsCountBreak > 3){
     clearInterval(countTime);
-    minutes = zero + 0;
+    minutes = "00";
     clockSession.innerHTML = "Work";
     displaySessionsCount.innerHTML = "Session 4";
-    clockTime.innerHTML = [minutes, seconds].join(":");
+    clockTime.innerHTML = ["00", "00"].join(":");
     var clockText = "Take a longer break now and restart Pomodoro!";
     showMessage(clockMessage, clockText);
     setTimeout(hideMessage, 10000, clockMessage);
-
   }else{
     countdown();
   }
@@ -135,14 +155,7 @@ function countdown(){
       notification.play();
       minutes = breakSession;
       sessionsCountBreak++;
-
-      // add another ziro to minutes
-      if(minutes < 10){
-        minutes = zero + breakSession;
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }else{
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }
+      displayRunningTime(breakSession, minutes, seconds);
       clockSession.innerHTML = "Break";
     }else{
       sessionsCountWork++;
@@ -150,58 +163,26 @@ function countdown(){
       notification.play();
       workSession = parseInt(workMinutes.textContent);
       minutes = workSession;
-
-      // add another ziro to minutes
-      if(minutes < 10){
-        minutes = zero + workSession;
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }else{
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }
+      displayRunningTime(breakSession, minutes, seconds);
       clockSession.innerHTML = "Work";
     }
 
   }else if(seconds > 0){
     seconds--;
+    displayTime(minutes, seconds);
 
-    // add another ziro to seconds
-    if(seconds < 10){
-      seconds = zero + seconds;
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }else{
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }
     if(minutes > 0){
       minutes = workSession;
       minutes--;
-      // add another ziro to minutes
-      if(minutes < 10){
-        minutes = zero + minutes;
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }else{
-        clockTime.innerHTML = [minutes, seconds].join(":");
-      }
+      displayTime(minutes, seconds);
     }
+
   }else{
     workSession = minutes;
     seconds = 10;
     seconds--;
     minutes--;
-
-    // add another ziro to seconds
-    if(seconds < 10){
-      seconds = zero + seconds;
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }else{
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }
-    // add another ziro to minutes
-    if(minutes < 10){
-      minutes = zero + minutes;
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }else{
-      clockTime.innerHTML = [minutes, seconds].join(":");
-    }
+    displayTime(minutes, seconds);
   }
 }
 

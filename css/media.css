@@ -1,5 +1,6 @@
 @media screen and (min-width: 320px) and (max-width: 640px){
-  .container {
+  
+  .main-container {
     max-width: 85%;
   }
   .app-info__container {
@@ -10,12 +11,12 @@
     left: 0;
     transform: none;
   }
-  .container .container__title {
+  .container .title {
     width: 300px;
     margin: 0.5em auto 0;
     font-size: 3.5em;
   }
-  .container__title-icon {
+  .title__icon {
     width: 28px;
     height: auto;
   }

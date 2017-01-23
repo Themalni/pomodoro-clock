@@ -1,14 +1,14 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #73aaba;
 }
 .app-container {
   width: 100%;
-  min-height: 100%;
   padding: 1em 0 0;
   background-color: #73aaba;
 }
-.container {
+.main-container {
   max-width: 470px;
   height: auto;
   margin: 0 auto 0em;
@@ -19,14 +19,14 @@ body {
   position: relative;
   box-shadow: 0 10px 10px -5px #333;
 }
-.container .container__title {
+.main-container .title {
   margin: 0;
   color: #fef8e7;
   font-size: 2.5em;
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 300;
 }
-.container__title-icon {
+.title__icon {
   width: 20.5px;
   height: auto;
 }
@@ -36,7 +36,7 @@ body {
   position: relative;
   bottom: 1px;
 }
-.container__description {
+.description {
   margin-top: 0;
   color: #fef8e7;
   font-family: 'Josefin Sans', sans-serif;
