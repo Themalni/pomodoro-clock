@@ -43,8 +43,8 @@
     width: 90%;
   }
   .settings__time {
-    min-width: 240px;
-    max-width: 260px;
+    min-width: 220px;
+    max-width: 230px;
   }
   .clock-container__play,
   .clock-container__pause,
