@@ -61,7 +61,10 @@
   .clock-container__stop {
     left: calc(50% + 28px);
   }
+  .footer__social-btn {
+    margin-top: 0.8em;
+  }
   .fa.fa-lg {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 }
