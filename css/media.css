@@ -47,6 +47,9 @@
     min-width: 160px;
     max-width: 200px;
   }
+  .clock-message {
+    top: -3.5em;
+  }
   .clock-container__play,
   .clock-container__pause,
   .clock-container__stop {
