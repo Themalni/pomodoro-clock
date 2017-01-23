@@ -48,7 +48,7 @@ for(i = 0; i < buttonsLength; i++){
       if(workSession == 1){
         settingsText = settingsText + "15 minutes!";
         showMessage(settingsMessage, settingsText);
-        /*setTimeout(hideMessage(settingsMessage), 3000);*/
+        setTimeout(hideMessage, 3000, settingsMessage);
       }
       if(workSession < 10){
         clockTime.innerHTML = [zero + workSession, "00"].join(":");
@@ -70,6 +70,7 @@ for(i = 0; i < buttonsLength; i++){
       if(breakSession == 1){
         settingsText = settingsText + "1 minute!";
         showMessage(settingsMessage, settingsText);
+        setTimeout(hideMessage, 3000, settingsMessage);
       }
       breakMinutes.innerHTML = breakSession  + "m";
     }else if(breakBtnData == "+" && breakMinutesVal < 30){
@@ -79,18 +80,18 @@ for(i = 0; i < buttonsLength; i++){
   });
 }
 
-/******  Show settings Message  ******/
+/******  Show Message  ******/
 function showMessage(message, text){
   message.innerHTML = text;
   message.style.visibility = "visible";
   message.style.opacity = 1;
 }
 
-/******  Hide settings Message  ******/
-function hideMessage(){
-
+/******  Hide Message  ******/
+function hideMessage(message){
+  message.style.visibility = "hidden";
+  message.style.opacity = 0;
 }
-setTimeout(hideMessage, 3000);
 
 /******  Modal window  ******/
 // show info about pomodoro technique
@@ -117,6 +118,8 @@ function runClock(){
     clockTime.innerHTML = [minutes, seconds].join(":");
     var clockText = "Take a longer break now and restart Pomodoro!";
     showMessage(clockMessage, clockText);
+    setTimeout(hideMessage, 10000, clockMessage);
+
   }else{
     countdown();
   }
