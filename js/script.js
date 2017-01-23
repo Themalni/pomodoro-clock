@@ -36,7 +36,7 @@ for(i = 0; i < buttonsLength; i++){
     var breakBtnData = e.target.dataset.breakBtn;
     var workMinutesVal = parseInt(workMinutes.textContent);
     var breakMinutesVal = parseInt(breakMinutes.textContent);
-    var settingsText = "You should rest at least ";
+    var settingsText = "";
 
     clearInterval(countTime);
     clockSession.innerHTML = "Work";
@@ -46,7 +46,7 @@ for(i = 0; i < buttonsLength; i++){
     if(workBtnData == "-" && workMinutesVal > 1){
       workSession = workMinutesVal - 1;
       if(workSession == 1){
-        settingsText = settingsText + "15 minutes!";
+        settingsText = "You should work for at least " + "15 minutes!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }
@@ -63,7 +63,7 @@ for(i = 0; i < buttonsLength; i++){
     }else if(breakBtnData == "-" && breakMinutesVal > 1){
       breakSession = breakMinutesVal - 1;
       if(breakSession == 1){
-        settingsText = settingsText + "1 minute!";
+        settingsText = "You should rest for at least " + "1 minute!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }

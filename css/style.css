@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #73aaba;
+  font-size: 100%;
 }
 .app-container {
   width: 100%;
