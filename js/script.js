@@ -36,6 +36,7 @@ for(i = 0; i < buttonsLength; i++){
     var breakBtnData = e.target.dataset.breakBtn;
     var workMinutesVal = parseInt(workMinutes.textContent);
     var breakMinutesVal = parseInt(breakMinutes.textContent);
+    var settingsText = "You should rest at least ";
 
     clearInterval(countTime);
     clockSession.innerHTML = "Work";
@@ -45,8 +46,9 @@ for(i = 0; i < buttonsLength; i++){
     if(workBtnData == "-" && workMinutesVal > 1){
       workSession = workMinutesVal - 1;
       if(workSession == 1){
-        showMessage(settingsMessage, 15);
-        setTimeout(hideMessage(settingsMessage), 3000);
+        settingsText = settingsText + "15 minutes!";
+        showMessage(settingsMessage, settingsText);
+        /*setTimeout(hideMessage(settingsMessage), 3000);*/
       }
       if(workSession < 10){
         clockTime.innerHTML = [zero + workSession, "00"].join(":");
@@ -66,8 +68,8 @@ for(i = 0; i < buttonsLength; i++){
     }else if(breakBtnData == "-" && breakMinutesVal > 1){
       breakSession = breakMinutesVal - 1;
       if(breakSession == 1){
-        showMessage(settingsMessage, 1);
-        setTimeout(hideMessage(settingsMessage), 3000);
+        settingsText = settingsText + "1 minute!";
+        showMessage(settingsMessage, settingsText);
       }
       breakMinutes.innerHTML = breakSession  + "m";
     }else if(breakBtnData == "+" && breakMinutesVal < 30){
@@ -78,19 +80,17 @@ for(i = 0; i < buttonsLength; i++){
 }
 
 /******  Show settings Message  ******/
-function showMessage(message, min){
-  message.innerHTML = "You should rest at least " + min + (min > 10 ? " minutes!" : " minute!");
+function showMessage(message, text){
+  message.innerHTML = text;
   message.style.visibility = "visible";
   message.style.opacity = 1;
-  console.log("I'm working, but not showing message!");
 }
 
 /******  Hide settings Message  ******/
-function hideMessage(message){
-  message.style.visibility = "hidden";
-  message.style.opacity = 0;
-}
+function hideMessage(){
 
+}
+setTimeout(hideMessage, 3000);
 
 /******  Modal window  ******/
 // show info about pomodoro technique
@@ -115,9 +115,8 @@ function runClock(){
     clockSession.innerHTML = "Work";
     displaySessionsCount.innerHTML = "Session 4";
     clockTime.innerHTML = [minutes, seconds].join(":");
-    showMessage(clockMessage, 30);
-    setTimeout(hideMessage, 60000);
-
+    var clockText = "Take a longer break now and restart Pomodoro!";
+    showMessage(clockMessage, clockText);
   }else{
     countdown();
   }
