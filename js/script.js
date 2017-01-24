@@ -55,7 +55,6 @@ for(i = 0; i < buttonsLength; i++){
 
     }else if(workBtnData == "+" && workMinutesVal < 60){
       workSession = workMinutesVal + 1;
-      seconds = "00";
       displayTime(workSession, 0);
       workMinutes.innerHTML = workSession  + "m";
 
@@ -120,7 +119,7 @@ infoIcon.addEventListener("click", function(){
   infoModal.classList.add("app-info--show");
   infoOverly.classList.add("app-info--show");
 });
-  // close modal with info
+// close modal with info
 infoModalClose.addEventListener("click", function(){
   infoModal.classList.remove("app-info--show");
   infoOverly.classList.remove("app-info--show");
@@ -130,18 +129,17 @@ infoModalClose.addEventListener("click", function(){
 
 // Timeout
 function runClock(){
-  displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
+
   if(sessionsCountBreak > 3){
     clearInterval(countTime);
-    minutes = "00";
-    clockSession.innerHTML = "Work";
-    displaySessionsCount.innerHTML = "Session 4";
-    clockTime.innerHTML = ["00", "00"].join(":");
+    displaySessionsCount.innerHTML = "Session " + 4;
     var clockText = "Take a longer break now and restart Pomodoro!";
+    resetClock();
     showMessage(clockMessage, clockText);
     setTimeout(hideMessage, 10000, clockMessage);
   }else{
     countdown();
+    displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
   }
 }
 
@@ -153,10 +151,25 @@ function countdown(){
     if(clockSession.textContent == "Work"){
       notification = new Audio("sounds/short.mp3");
       notification.play();
-      minutes = breakSession;
       sessionsCountBreak++;
-      displayRunningTime(breakSession, minutes, seconds);
-      clockSession.innerHTML = "Break";
+
+      if(sessionsCountWork == 4){
+        minutes = 0;
+        workSession = 0;
+        breakSession = 0;
+        clearInterval(countTime);
+        displayTime(workSession, 0);
+        /*resetClock();*/
+        /*displayRunningTime(0, minutes, seconds);*/
+        clockSession.innerHTML = "Work";
+      }else{
+        minutes = breakSession;
+        displayRunningTime(breakSession, minutes, seconds);
+        clockSession.innerHTML = "Break";
+      }
+
+
+
     }else{
       sessionsCountWork++;
       notification = new Audio("sounds/elevator.mp3");
@@ -186,6 +199,21 @@ function countdown(){
   }
 }
 
+function resetClock(min){
+  seconds = 10;
+  sessionsCountBreak = 0;
+  sessionsCountWork = 1;
+  clockSession.innerHTML = "Work";
+  min = parseInt(workMinutes.textContent);
+  // add another ziro to minutes
+  if(min < 10){
+    min = zero + min;
+    clockTime.innerHTML = [min, "00"].join(":");
+  }else{
+    clockTime.innerHTML = [min, "00"].join(":");
+  }
+}
+
 /*******  Clock buttons  *******/
 
 // start clock
@@ -196,20 +224,12 @@ playBtn.addEventListener("click", function(){
 pauseBtn.addEventListener("click", function(){
   clearInterval(countTime);
 });
-  // stop clock
+// stop clock
 stopBtn.addEventListener("click", function(){
   clearInterval(countTime);
-  seconds = 10;
+  resetClock(workSession);
   displaySessionsCount.innerHTML = "Session 1";
-  clockSession.innerHTML = "Work";
-
-  // add another ziro to minutes
-  if(parseInt(workMinutes.textContent) < 10){
-    clockTime.innerHTML = [zero + parseInt(workMinutes.textContent), "00"].join(":");
-  }else{
-    clockTime.innerHTML = [parseInt(workMinutes.textContent), "00"].join(":");
-  }
 });
 
-// correct media queries view height and app title
+
 // prevent session time show before stop of clock
