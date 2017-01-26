@@ -8,7 +8,7 @@ var infoOverly = document.querySelector(".app-info__overly");
 var infoModalClose = document.querySelector(".app-info__close");
 var playBtn = document.querySelector(".clock-container__play");
 var pauseBtn = document.querySelector(".clock-container__pause");
-var stopBtn = document.querySelector(".clock-container__stop");
+var resetBtn = document.querySelector(".clock-container__reset");
 var clockSession = document.querySelector(".clock-session");
 var settingsMessage = document.querySelector(".settings__message");
 var clockMessage = document.querySelector(".clock-message");
@@ -100,6 +100,21 @@ function displayTime(min, sec){
   }
 }
 
+/*****  Reset Clock  *****/
+function resetClock(min){
+  seconds = 10;
+  sessionsCountBreak = 0;
+  sessionsCountWork = 0;
+  clockSession.innerHTML = "Work";
+  // add another ziro to minutes
+  if(min < 10){
+    min = zero + min;
+    clockTime.innerHTML = [min, "00"].join(":");
+  }else{
+    clockTime.innerHTML = [min, "00"].join(":");
+  }
+}
+
 /******  Show Message  ******/
 function showMessage(message, text){
   message.innerHTML = text;
@@ -127,16 +142,14 @@ infoModalClose.addEventListener("click", function(){
 
 /******  Clock  ******/
 
+
+
 // Timeout
 function runClock(){
 
   if(sessionsCountBreak > 3){
     clearInterval(countTime);
-    displaySessionsCount.innerHTML = "Session " + 4;
-    var clockText = "Take a longer break now and restart Pomodoro!";
-    resetClock();
-    showMessage(clockMessage, clockText);
-    setTimeout(hideMessage, 10000, clockMessage);
+    resetClock(workSession);
   }else{
     countdown();
     displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
@@ -148,48 +161,42 @@ function countdown(){
 
   if(minutes == 0 && seconds == 0){
 
+    // worked 4 sessions
+    if(sessionsCountWork == 4){
+      breakSession = workSession;
+      workSession = 0;
+      displayTime(workSession, 0);
+      clockSession.innerHTML = "Work";
+      var clockText = "Take a longer break now then restart Pomodoro!";
+      showMessage(clockMessage, clockText);
+    }
+    // Work session finished
     if(clockSession.textContent == "Work"){
-      notification = new Audio("sounds/short.mp3");
-      notification.play();
       sessionsCountBreak++;
-
-      if(sessionsCountWork == 4){
-        minutes = 0;
-        workSession = 0;
-        breakSession = 0;
-        clearInterval(countTime);
-        displayTime(workSession, 0);
-        /*resetClock();*/
-        /*displayRunningTime(0, minutes, seconds);*/
-        clockSession.innerHTML = "Work";
-      }else{
-        minutes = breakSession;
-        displayRunningTime(breakSession, minutes, seconds);
-        clockSession.innerHTML = "Break";
-      }
-
-
-
-    }else{
-      sessionsCountWork++;
+      breakSession = parseInt(breakMinutes.textContent);
+      minutes = breakSession;
+      displayRunningTime(breakSession, minutes, seconds);
+      clockSession.innerHTML = "Break";
       notification = new Audio("sounds/elevator.mp3");
       notification.play();
+    //Break session finished
+    }else if(clockSession.textContent == "Break"){
+      sessionsCountWork++;
       workSession = parseInt(workMinutes.textContent);
       minutes = workSession;
-      displayRunningTime(breakSession, minutes, seconds);
+      displayRunningTime(workSession, minutes, seconds);
       clockSession.innerHTML = "Work";
+      notification = new Audio("sounds/short.mp3");
+      notification.play();
     }
-
   }else if(seconds > 0){
     seconds--;
     displayTime(minutes, seconds);
-
     if(minutes > 0){
       minutes = workSession;
       minutes--;
       displayTime(minutes, seconds);
     }
-
   }else{
     workSession = minutes;
     seconds = 10;
@@ -199,36 +206,31 @@ function countdown(){
   }
 }
 
-function resetClock(min){
-  seconds = 10;
-  sessionsCountBreak = 0;
-  sessionsCountWork = 1;
-  clockSession.innerHTML = "Work";
-  min = parseInt(workMinutes.textContent);
-  // add another ziro to minutes
-  if(min < 10){
-    min = zero + min;
-    clockTime.innerHTML = [min, "00"].join(":");
-  }else{
-    clockTime.innerHTML = [min, "00"].join(":");
-  }
-}
-
 /*******  Clock buttons  *******/
 
 // start clock
 playBtn.addEventListener("click", function(){
+  workSession = parseInt(workMinutes.textContent);
+  sessionsCountWork = 1;
+  clearInterval(countTime);
   countTime = setInterval(runClock, 1000);
+  hideMessage(clockMessage);
 });
 // pause clock
 pauseBtn.addEventListener("click", function(){
   clearInterval(countTime);
 });
-// stop clock
-stopBtn.addEventListener("click", function(){
+// reset clock
+resetBtn.addEventListener("click", function(){
   clearInterval(countTime);
-  resetClock(workSession);
+  seconds = 10;
+  workSession = 25;
+  workMinutes.textContent = 25 + "m";
+  breakMinutes.textContent = 5 + "m";
   displaySessionsCount.innerHTML = "Session 1";
+  displayTime(workSession, 0);
+  hideMessage(clockMessage);
+
 });
 
 

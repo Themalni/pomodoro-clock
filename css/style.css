@@ -265,7 +265,7 @@ body {
 }
 .clock-container__play,
 .clock-container__pause,
-.clock-container__stop {
+.clock-container__reset {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -279,7 +279,7 @@ body {
   top: 9.3em;
   left: calc(50% - 20px);
 }
-.clock-container__stop {
+.clock-container__reset {
   top: 8.3em;
   left: calc(50% + 25px);
 }
