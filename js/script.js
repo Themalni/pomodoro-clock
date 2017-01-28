@@ -167,26 +167,31 @@ function countdown(){
       clockSession.innerHTML = "Work";
       var clockText = "Take a longer break now then restart Pomodoro!";
       showMessage(clockMessage, clockText);
+      clearInterval(countTime);
+      resetClock(workSession);
     }
-    // Work session finished
-    if(clockSession.textContent == "Work"){
-      sessionsCountBreak++;
-      breakSession = parseInt(breakMinutes.textContent);
-      minutes = breakSession;
-      displayRunningTime(breakSession, minutes, seconds);
-      clockSession.innerHTML = "Break";
-      notification = new Audio("sounds/elevator.mp3");
-      notification.play();
-    //Break session finished
-    }else if(clockSession.textContent == "Break"){
-      sessionsCountWork++;
-      workSession = parseInt(workMinutes.textContent);
-      minutes = workSession;
-      displayRunningTime(workSession, minutes, seconds);
-      clockSession.innerHTML = "Work";
-      notification = new Audio("sounds/short.mp3");
-      notification.play();
+    else {
+      // Work session finished
+      if(clockSession.textContent == "Work"){
+        sessionsCountBreak++;
+        breakSession = parseInt(breakMinutes.textContent);
+        minutes = breakSession;
+        displayRunningTime(breakSession, minutes, seconds);
+        clockSession.innerHTML = "Break";
+        notification = new Audio("sounds/elevator.mp3");
+        notification.play();
+      //Break session finished
+      }else if(clockSession.textContent == "Break"){
+        sessionsCountWork++;
+        workSession = parseInt(workMinutes.textContent);
+        minutes = workSession;
+        displayRunningTime(workSession, minutes, seconds);
+        clockSession.innerHTML = "Work";
+        notification = new Audio("sounds/short.mp3");
+        notification.play();
+      }
     }
+
   }else if(seconds > 0){
     seconds--;
     displayTime(minutes, seconds);
