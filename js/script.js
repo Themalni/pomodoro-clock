@@ -104,7 +104,7 @@ function displayTime(min, sec){
 function resetClock(min){
   seconds = 10;
   sessionsCountBreak = 0;
-  sessionsCountWork = 0;
+  sessionsCountWork = 4;
   clockSession.innerHTML = "Work";
   // add another ziro to minutes
   if(min < 10){
@@ -147,7 +147,8 @@ function runClock(){
 
   if(sessionsCountBreak > 3){
     clearInterval(countTime);
-    resetClock(workSession);
+    resetClock(0);
+    displaySessionsCount.innerHTML = "Session 4";
   }else{
     countdown();
     displaySessionsCount.innerHTML = "Session " + sessionsCountWork;
@@ -161,14 +162,11 @@ function countdown(){
 
     // worked for 4 sessions
     if(sessionsCountWork == 4){
-      breakSession = workSession;
-      workSession = 0;
-      displayTime(workSession, 0);
       clockSession.innerHTML = "Work";
       var clockText = "Take a longer break now then restart Pomodoro!";
       showMessage(clockMessage, clockText);
       clearInterval(countTime);
-      resetClock(workSession);
+      resetClock(0);
     }
     else {
       // Work session finished
