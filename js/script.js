@@ -142,8 +142,6 @@ infoModalClose.addEventListener("click", function(){
 
 /******  Clock  ******/
 
-
-
 // Timeout
 function runClock(){
 
@@ -161,7 +159,7 @@ function countdown(){
 
   if(minutes == 0 && seconds == 0){
 
-    // worked 4 sessions
+    // worked for 4 sessions
     if(sessionsCountWork == 4){
       breakSession = workSession;
       workSession = 0;
