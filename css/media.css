@@ -66,13 +66,15 @@
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {
-    bottom: 2em;
+    bottom: 1.8em;
+    left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
-    bottom: 1em;
+    bottom: 0.5em;
+    left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
-    bottom: 2em;
+    bottom: 1.8em;
   }
   .footer__social-btn {
     margin-top: 0.8em;
