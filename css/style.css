@@ -218,7 +218,7 @@ body {
 /*** Clock ***/
 .clock-container {
   max-width: 100%;
-  min-height: 230px;
+  min-height: 250px;
   position: relative;
 }
 .clock-message {
@@ -273,7 +273,7 @@ body {
 }
 .clock-container__play {
   top: 8.3em;
-  left: calc(50% - 65px);
+  left: calc(50% - 68px);
 }
 .clock-container__pause {
   top: 9.3em;
@@ -281,7 +281,51 @@ body {
 }
 .clock-container__reset {
   top: 8.3em;
-  left: calc(50% + 25px);
+  left: calc(50% + 28px);
+}
+.clock-tooltip {
+  visibility: hidden;
+  padding: 1px 6px 3px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 0.7em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(-30%);
+  transition: all 0.3s ease-in-out;
+}
+.clock-tooltip::after {
+  content: "";
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+}
+.clock-tooltip__play {
+  position: absolute;
+  bottom: 2.6em;
+  left: calc(50% - 65px);
+}
+.clock-tooltip__pause {
+  position: absolute;
+  bottom: 1.2em;
+  left: calc(50% - 22px);
+}
+.clock-tooltip__reset {
+  position: absolute;
+  bottom: 2.6em;
+  left: calc(50% + 29px);
+}
+.clock-container__play:hover ~ .clock-tooltip__play,
+.clock-container__pause:hover ~ .clock-tooltip__pause,
+.clock-container__reset:hover ~ .clock-tooltip__reset {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0%);
 }
 
 /*** Footer ***/
