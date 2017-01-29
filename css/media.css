@@ -65,6 +65,15 @@
   .clock-container__stop {
     left: calc(50% + 28px);
   }
+  .clock-tooltip__play {
+    bottom: 3em;
+  }
+  .clock-tooltip__pause {
+    bottom: 1.6em;
+  }
+  .clock-tooltip__reset {
+    bottom: 3em;
+  }
   .footer__social-btn {
     margin-top: 0.8em;
   }
