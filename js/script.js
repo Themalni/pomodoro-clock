@@ -54,7 +54,7 @@ for(i = 0; i < buttonsLength; i++){
       workMinutes.innerHTML = workSession + "m";
 
     }else if(workBtnData == "+" && workMinutesVal < 60){
-      workSession = workMinutesVal + 1;
+      workSession = workMinutesVal + 5;
       displayTime(workSession, 0);
       workMinutes.innerHTML = workSession  + "m";
 
