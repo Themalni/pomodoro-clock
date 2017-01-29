@@ -66,7 +66,7 @@
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {
-    bottom: 1.8em;
+    bottom: 1.2em;
     left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
@@ -74,7 +74,7 @@
     left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
-    bottom: 1.2em;
+    bottom: 1.8em;
   }
   .footer__social-btn {
     margin-top: 0.8em;
