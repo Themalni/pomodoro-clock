@@ -70,11 +70,11 @@
     left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
-    bottom: 0.5em;
+    bottom: -0.2em;
     left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
-    bottom: 1.8em;
+    bottom: 1.2em;
   }
   .footer__social-btn {
     margin-top: 0.8em;
