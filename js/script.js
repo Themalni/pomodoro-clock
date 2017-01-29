@@ -43,10 +43,10 @@ for(i = 0; i < buttonsLength; i++){
     seconds = 60;
 
     // change work time
-    if(workBtnData == "-" && workMinutesVal > 15){
+    if(workBtnData == "-" && workMinutesVal > 5){
       workSession = workMinutesVal - 5;
-      if(workSession == 15){
-        settingsText = "You should work at least " + "15 minutes!";
+      if(workSession == 5){
+        settingsText = "You should work at least 5 minutes!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }
@@ -62,7 +62,7 @@ for(i = 0; i < buttonsLength; i++){
     }else if(breakBtnData == "-" && breakMinutesVal > 1){
       breakSession = breakMinutesVal - 1;
       if(breakSession == 1){
-        settingsText = "You should rest for at least " + "1 minute!";
+        settingsText = "You should rest for at least 1 minute!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
       }
@@ -79,7 +79,7 @@ for(i = 0; i < buttonsLength; i++){
 function displayRunningTime(sessionName, min, sec){
   if(min < 10){
     min = zero + sessionName;
-    sec = zero + seconds;
+    /*sec = zero + seconds;*/
     clockTime.innerHTML = [min, sec].join(":");
   }else if(sec < 10){
     sec = zero + seconds;
@@ -92,8 +92,14 @@ function displayRunningTime(sessionName, min, sec){
 function displayTime(min, sec){
   if(min < 10){
     min = zero + min;
-    sec = zero + sec;
-    clockTime.innerHTML = [min, sec].join(":");
+    if(sec < 10){
+      sec = zero + sec;
+      clockTime.innerHTML = [min, sec].join(":");
+    }else{
+      clockTime.innerHTML = [min, sec].join(":");
+    }
+    /*sec = zero + sec;*/
+
   }else if(sec < 10){
     sec = zero + sec;
     clockTime.innerHTML = [min, sec].join(":");
