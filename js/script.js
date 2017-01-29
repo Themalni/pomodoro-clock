@@ -22,7 +22,7 @@ var sessionsCountBreak = 0;
 var workSession = 25;
 var breakSession = 5;
 var zero = "0";
-var seconds = 10;
+var seconds = 60;
 var minutes = workSession;
 
 /******  Work and break session settings  ******/
@@ -40,12 +40,12 @@ for(i = 0; i < buttonsLength; i++){
 
     clearInterval(countTime);
     clockSession.innerHTML = "Work";
-    seconds = 10;
+    seconds = 60;
 
     // change work time
-    if(workBtnData == "-" && workMinutesVal > 1){
-      workSession = workMinutesVal - 1;
-      if(workSession == 1){
+    if(workBtnData == "-" && workMinutesVal > 15){
+      workSession = workMinutesVal - 5;
+      if(workSession == 15){
         settingsText = "You should work at least " + "15 minutes!";
         showMessage(settingsMessage, settingsText);
         setTimeout(hideMessage, 3000, settingsMessage);
@@ -73,6 +73,8 @@ for(i = 0; i < buttonsLength; i++){
     }
   });
 }
+
+/***** Display time on the page  *****/
 
 function displayRunningTime(sessionName, min, sec){
   if(min < 10){
@@ -102,7 +104,7 @@ function displayTime(min, sec){
 
 /*****  Reset Clock  *****/
 function resetClock(min){
-  seconds = 10;
+  seconds = 60;
   sessionsCountBreak = 0;
   sessionsCountWork = 4;
   clockSession.innerHTML = "Work";
@@ -114,31 +116,6 @@ function resetClock(min){
     clockTime.innerHTML = [min, "00"].join(":");
   }
 }
-
-/******  Show Message  ******/
-function showMessage(message, text){
-  message.innerHTML = text;
-  message.style.visibility = "visible";
-  message.style.opacity = 1;
-}
-
-/******  Hide Message  ******/
-function hideMessage(message){
-  message.style.visibility = "hidden";
-  message.style.opacity = 0;
-}
-
-/******  Modal window  ******/
-// show info about pomodoro technique
-infoIcon.addEventListener("click", function(){
-  infoModal.classList.add("app-info--show");
-  infoOverly.classList.add("app-info--show");
-});
-// close modal with info
-infoModalClose.addEventListener("click", function(){
-  infoModal.classList.remove("app-info--show");
-  infoOverly.classList.remove("app-info--show");
-});
 
 /******  Clock  ******/
 
@@ -162,6 +139,7 @@ function countdown(){
 
     // worked for 4 sessions
     if(sessionsCountWork == 4){
+      minutes = parseInt(workMinutes.textContent);
       clockSession.innerHTML = "Work";
       var clockText = "Take a longer break now then restart Pomodoro!";
       showMessage(clockMessage, clockText);
@@ -189,7 +167,6 @@ function countdown(){
         notification.play();
       }
     }
-
   }else if(seconds > 0){
     seconds--;
     displayTime(minutes, seconds);
@@ -200,7 +177,7 @@ function countdown(){
     }
   }else{
     workSession = minutes;
-    seconds = 10;
+    seconds = 60;
     seconds--;
     minutes--;
     displayTime(minutes, seconds);
@@ -224,15 +201,37 @@ pauseBtn.addEventListener("click", function(){
 // reset clock
 resetBtn.addEventListener("click", function(){
   clearInterval(countTime);
-  seconds = 10;
+  seconds = 60;
   workSession = 25;
   workMinutes.textContent = 25 + "m";
   breakMinutes.textContent = 5 + "m";
   displaySessionsCount.innerHTML = "Session 1";
   displayTime(workSession, 0);
   hideMessage(clockMessage);
-
 });
 
+/******  Show Message  ******/
+function showMessage(message, text){
+  message.innerHTML = text;
+  message.style.visibility = "visible";
+  message.style.opacity = 1;
+}
 
-// prevent session time show before stop of clock
+/******  Hide Message  ******/
+function hideMessage(message){
+  message.style.visibility = "hidden";
+  message.style.opacity = 0;
+}
+
+/******  Modal window  ******/
+
+// show info about pomodoro technique
+infoIcon.addEventListener("click", function(){
+  infoModal.classList.add("app-info--show");
+  infoOverly.classList.add("app-info--show");
+});
+// close modal with info
+infoModalClose.addEventListener("click", function(){
+  infoModal.classList.remove("app-info--show");
+  infoOverly.classList.remove("app-info--show");
+});
