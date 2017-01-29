@@ -52,7 +52,7 @@
   }
   .clock-container__play,
   .clock-container__pause,
-  .clock-container__stop {
+  .clock-container__reset {
     width: 46px;
     height: 46px;
   }
@@ -62,7 +62,7 @@
   .clock-container__pause {
     left: calc(50% - 23px);
   }
-  .clock-container__stop {
+  .clock-container__reset {
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {
