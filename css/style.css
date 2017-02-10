@@ -198,9 +198,10 @@ body {
 .settings__time-substract,
 .settings__time-add {
   display: block;
-  width: 30px;
+  width: 50px;
+  border: 0;
   background-color: rgba(115, 170, 186, 0.7);
-  padding: 4px 8px;
+  padding: 4px 15px;
   margin-top: 0;
   cursor: pointer;
   position: absolute;
@@ -263,25 +264,44 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
 }
-.clock-container__play,
-.clock-container__pause,
-.clock-container__reset {
+.clock__btn__play {
   width: 40px;
   height: 40px;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  background-image: url(../images/play_btn_2.svg);
+  background-repeat: no-repeat;
   position: absolute;
+  top: 9.5em;
+  left: calc(50% - 68px);
   cursor: pointer;
 }
-.clock-container__play {
-  top: 8.3em;
-  left: calc(50% - 68px);
-}
-.clock-container__pause {
-  top: 9.3em;
+.clock__btn__pause {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  background-image: url(../images/pause_btn_2.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 10.8em;
   left: calc(50% - 20px);
+  cursor: pointer;
 }
-.clock-container__reset {
-  top: 8.3em;
+.clock__btn__reset {
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background-color: transparent;
+  background-size: contain;
+  background-image: url(../images/restart_btn_2.svg);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 9.5em;
   left: calc(50% + 28px);
+  cursor: pointer;
 }
 .clock-tooltip {
   visibility: hidden;
