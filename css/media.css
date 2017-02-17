@@ -50,19 +50,19 @@
   .clock-message {
     top: -3em;
   }
-  .clock-container__play,
-  .clock-container__pause,
-  .clock-container__reset {
+  .clock__btn__play,
+  .clock__btn__pause,
+  .clock__btn__reset {
     width: 46px;
     height: 46px;
   }
-  .clock-container__play {
+  .clock__btn__play {
     left: calc(50% - 74px);
   }
-  .clock-container__pause {
+  .clock__btn__pause {
     left: calc(50% - 23px);
   }
-  .clock-container__reset {
+  .clock__btn__reset {
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {

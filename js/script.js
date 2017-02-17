@@ -13,8 +13,6 @@ var clockSession = document.querySelector(".clock-session");
 var settingsMessage = document.querySelector(".settings__message");
 var clockMessage = document.querySelector(".clock-message");
 var displaySessionsCount = document.querySelector(".clock-session__count");
-var i;
-var buttonsLength = buttons.length;
 var countTime;
 var notification;
 var sessionsCountWork = 1;
@@ -27,52 +25,53 @@ var minutes = workSession;
 
 /******  Work and break session settings  ******/
 
-  // listening for a button click
-for(i = 0; i < buttonsLength; i++){
-  var clickedBtn = buttons[i];
+function setTime(){
+  var clickedBtn = [].slice.call(buttons);
+  clickedBtn.map(function(button){
+    button.addEventListener("click", function(e){
+      var workBtnData = e.target.dataset.workBtn;
+      var breakBtnData = e.target.dataset.breakBtn;
+      var workMinutesVal = parseInt(workMinutes.textContent);
+      var breakMinutesVal = parseInt(breakMinutes.textContent);
+      var settingsText = "";
 
-  clickedBtn.addEventListener("click", function(e){
-    var workBtnData = e.target.dataset.workBtn;
-    var breakBtnData = e.target.dataset.breakBtn;
-    var workMinutesVal = parseInt(workMinutes.textContent);
-    var breakMinutesVal = parseInt(breakMinutes.textContent);
-    var settingsText = "";
+      clearInterval(countTime);
+      clockSession.innerHTML = "Work";
+      seconds = 60;
 
-    clearInterval(countTime);
-    clockSession.innerHTML = "Work";
-    seconds = 60;
+      // change work time
+      if(workBtnData == "-" && workMinutesVal > 5){
+        workSession = workMinutesVal - 5;
+        if(workSession == 5){
+          settingsText = "You should work at least 5 minutes!";
+          showMessage(settingsMessage, settingsText);
+          setTimeout(hideMessage, 3000, settingsMessage);
+        }
+        displayTime(workSession, 0);
+        workMinutes.innerHTML = workSession + "m";
 
-    // change work time
-    if(workBtnData == "-" && workMinutesVal > 5){
-      workSession = workMinutesVal - 5;
-      if(workSession == 5){
-        settingsText = "You should work at least 5 minutes!";
-        showMessage(settingsMessage, settingsText);
-        setTimeout(hideMessage, 3000, settingsMessage);
+      }else if(workBtnData == "+" && workMinutesVal < 60){
+        workSession = workMinutesVal + 5;
+        displayTime(workSession, 0);
+        workMinutes.innerHTML = workSession  + "m";
+
+      // change break time
+      }else if(breakBtnData == "-" && breakMinutesVal > 1){
+        breakSession = breakMinutesVal - 1;
+        if(breakSession == 1){
+          settingsText = "You should rest for at least 1 minute!";
+          showMessage(settingsMessage, settingsText);
+          setTimeout(hideMessage, 3000, settingsMessage);
+        }
+        breakMinutes.innerHTML = breakSession  + "m";
+      }else if(breakBtnData == "+" && breakMinutesVal < 30){
+        breakSession = breakMinutesVal + 1;
+        breakMinutes.innerHTML = breakSession  + "m";
       }
-      displayTime(workSession, 0);
-      workMinutes.innerHTML = workSession + "m";
-
-    }else if(workBtnData == "+" && workMinutesVal < 60){
-      workSession = workMinutesVal + 5;
-      displayTime(workSession, 0);
-      workMinutes.innerHTML = workSession  + "m";
-
-    // change break time
-    }else if(breakBtnData == "-" && breakMinutesVal > 1){
-      breakSession = breakMinutesVal - 1;
-      if(breakSession == 1){
-        settingsText = "You should rest for at least 1 minute!";
-        showMessage(settingsMessage, settingsText);
-        setTimeout(hideMessage, 3000, settingsMessage);
-      }
-      breakMinutes.innerHTML = breakSession  + "m";
-    }else if(breakBtnData == "+" && breakMinutesVal < 30){
-      breakSession = breakMinutesVal + 1;
-      breakMinutes.innerHTML = breakSession  + "m";
-    }
+    });
   });
 }
+setTime();
 
 /***** Display time on the page  *****/
 

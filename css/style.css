@@ -340,9 +340,9 @@ body {
   bottom: 2.6em;
   left: calc(50% + 29px);
 }
-.clock-container__play:hover ~ .clock-tooltip__play,
-.clock-container__pause:hover ~ .clock-tooltip__pause,
-.clock-container__reset:hover ~ .clock-tooltip__reset {
+.clock__btn__play:hover ~ .clock-tooltip__play,
+.clock__btn__pause:hover ~ .clock-tooltip__pause,
+.clock__btn__reset:hover ~ .clock-tooltip__reset {
   visibility: visible;
   opacity: 1;
   transform: translateY(0%);
