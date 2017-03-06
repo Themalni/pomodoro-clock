@@ -57,6 +57,7 @@
     height: 46px;
   }
   .clock__btn__play {
+    top: 12em;
     left: calc(50% - 74px);
   }
   .clock__btn__pause {
