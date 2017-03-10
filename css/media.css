@@ -57,27 +57,27 @@
     height: 46px;
   }
   .clock__btn__play {
-    top: 12.8em;
+    top: 12.3em;
     left: calc(50% - 74px);
   }
   .clock__btn__pause {
-    top: 14.8em;
+    top: 14.3em;
     left: calc(50% - 23px);
   }
   .clock__btn__reset {
-    top: 12.8em;
+    top: 12.3em;
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {
-    bottom: 1.2em;
+    bottom: 0.7em;
     left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
-    bottom: -0.2em;
+    bottom: -0.7em;
     left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
-    bottom: 1.2em;
+    bottom: 0.7em;
     left: calc(50% + 32px);
   }
   .footer__social-btn {
