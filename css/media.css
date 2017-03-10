@@ -57,15 +57,15 @@
     height: 46px;
   }
   .clock__btn__play {
-    top: 12.3em;
+    top: 12.8em;
     left: calc(50% - 74px);
   }
   .clock__btn__pause {
-    top: 14.3em;
+    top: 14.8em;
     left: calc(50% - 23px);
   }
   .clock__btn__reset {
-    top: 12.3em;
+    top: 12.8em;
     left: calc(50% + 28px);
   }
   .clock-tooltip__play {
