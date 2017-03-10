@@ -211,6 +211,47 @@ body {
   left: 0;
   transform: translateY(-50%);
 }
+.settings__time-button {
+  overflow: visible;
+}
+.settings__time-button:after {
+  content: "";
+  position: absolute;
+  top: 37%;
+  left: 40%;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(34,81,112,0.3);
+  border-radius: 50%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+}
+.settings__time-button:focus:not(:active)::after {
+  animation: circleGrow .4s ease-out;
+}
+@keyframes circleGrow {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(2, 2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(4, 4);
+    opacity: 0.7;
+  }
+  80% {
+    transform: scale(5, 5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(6, 6);
+    opacity: 0;
+  }
+}
 .settings__time-add {
   top: 50%;
   right: 0;
@@ -219,7 +260,7 @@ body {
 /*** Clock ***/
 .clock-container {
   max-width: 100%;
-  min-height: 250px;
+  min-height: 220px;
   position: relative;
 }
 .clock-message {
@@ -327,17 +368,17 @@ body {
 }
 .clock-tooltip__play {
   position: absolute;
-  bottom: 2.6em;
+  bottom: 2.5em;
   left: calc(50% - 65px);
 }
 .clock-tooltip__pause {
   position: absolute;
-  bottom: 1.2em;
+  bottom: 0.9em;
   left: calc(50% - 22px);
 }
 .clock-tooltip__reset {
   position: absolute;
-  bottom: 2.6em;
+  bottom: 2.5em;
   left: calc(50% + 29px);
 }
 .clock__btn__play:hover ~ .clock-tooltip__play,
