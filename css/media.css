@@ -2,6 +2,9 @@
   body {
     font-size: 120%;
   }
+  button:focus {
+    outline: none;
+  }
   .app-container {
     overflow: hidden;
   }
@@ -73,7 +76,7 @@
     left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
-    bottom: -1.4m;
+    bottom: -1.4em;
     left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
