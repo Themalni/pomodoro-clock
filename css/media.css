@@ -76,7 +76,7 @@
     left: calc(50% - 70px);
   }
   .clock-tooltip__pause {
-    bottom: -1.4em;
+    bottom: -1.8em;
     left: calc(50% - 24px);
   }
   .clock-tooltip__reset {
